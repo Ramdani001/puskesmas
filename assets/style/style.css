@@ -1,0 +1,60 @@
+@media (max-width: 576px) {
+    #mainContent{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #mainContent .leftContent img{
+        /* width: 95% !important;
+        height: 100% */
+        display: none;
+    }
+
+    /* #boxLogin .login-header {
+        display: none !important;
+    } */
+
+    #ContainerLogin {
+        margin-top: 10% !important;
+        padding-left: 0 !important;
+    }
+
+    #boxLogin {
+        margin: 0;
+        width: 100% !important;
+    }
+}
+
+html, body {
+    height: 100%;
+    background-color: #788F76;
+  }
+
+  #boxLogin .login-header {
+    background: transparent !important;
+}
+
+#boxLogin .login-body .card{
+    background: #DAEED9 !important;
+}
+
+#content {
+    height: 90%;
+    top: 50% !important;
+}
+
+header{
+    background-color: #DBE4D7;
+    width: 100%;
+    height: 5%;
+}
+
+footer{
+    background-color: #DBE4D7;
+    width: 100%;
+    height: 5%;
+}
+
+#content .leftContent img{
+    width: 114%;
+}
