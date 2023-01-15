@@ -1,9 +1,3 @@
-<?php 
-    if($_SESSION["dataLogin"]!=null){
-        header("Location: beranda");
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,11 +38,11 @@
                         <div class="card" style="border-radius: 30px !important;">
                             <div class="card-header">
                                 <img src="<?= $main_url?>assets/img/login/Logo-Puskesmas.png" width="70" alt="">
-                            </div>
+                            </div> 
                             <div class="card-body">
                                 <form action="" method="post">
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+                                        <input type="text" class="form-control" id="email" placeholder="name@example.com" name="email">
                                         <label for="email">Email address</label>
                                     </div>
                                     <div class="form-floating mb-3">

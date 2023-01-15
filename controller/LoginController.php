@@ -12,7 +12,7 @@
                 $_SESSION['dataLogin'] = $row; 
                 header("Location: beranda");
                 exit;
-            }else{
+            }else{ 
                 $_SESSION['isFailed'] = true; 
                 header("Location: login_user");
             }

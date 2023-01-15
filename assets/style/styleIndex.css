@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../img/login/index_puskesmas.jpg');
+}
+
+.navbar {
+    background-color: #DBE4D7 !important;
+}
+
+.navbar #navMenu{
+    text-align: center;
+    border-radius: 50px;
+    margin-left: 40% !important;
+    background-color: #658c6467;
+}
+
+.navbar #navMenu .itemMenu{
+    background-color: #33623252 !important;
+    border-radius: 10px;
+
+}
+
+.navbar #navMenu .itemMenu a{
+    text-decoration: none !important;
+    color: white !important;
+}
+
+#mainContent #contentText{
+    background-color: rgba(0,0,0, .7);
+    color: white;
+}
+
+#mainContent #contentText h1{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.btnAction #box .itemAction {
+    color: black !important;
+    border-radius: 20px;
+    background-color: #D9D9D9 !important;
+}
+
+.btnAction #box .itemAction:hover {
+    transform: rotateY(-34deg) !important;
+    transition: ease-in-out;
+    transition-duration: .3s;
+}
