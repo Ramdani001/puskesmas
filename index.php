@@ -37,6 +37,13 @@
             case $me.'/poli/poli-tht' : require "view/viewsUsers/poli/poliTht.php"; break;
             case $me.'/poli/poli-mata' : require "view/viewsUsers/poli/poliMata.php"; break;
             
+            // Admin
+            case $me.'/admin/dashboard' : require "view/viewAdmin/dashboard.php"; break;
+            case $me.'/admin/dataPasien' : require "view/viewAdmin/dataPasien.php"; break;
+            case $me.'/admin/dataDokter' : require "view/viewAdmin/dataDokter.php"; break;
+            case $me.'/admin/dataObat' : require "view/viewAdmin/dataObat.php"; break;
+            case $me.'/admin/dataPemesanan' : require "view/viewAdmin/dataPemesanan.php"; break;
+            
             default: http_response_code(404); require "view/404.php" ; break;
         }
     }catch(\err){
