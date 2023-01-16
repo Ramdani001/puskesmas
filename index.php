@@ -33,9 +33,9 @@
             case $me.'/poli/poli-gigi' : require "view/viewsUsers/poli/poliGigi.php"; break;
             case $me.'/poli/poli-umum' : require "view/viewsUsers/poli/poliUmum.php"; break;
             case $me.'/poli/poli-paruparu' : require "view/viewsUsers/poli/poliParuParu.php"; break;
-            case $me.'/poli/poli-kulit' : require "view/viewsUsers/poli/poliKulit.php"; break;
-            case $me.'/poli/poli-tht' : require "view/viewsUsers/poli/poliTht.php"; break;
-            case $me.'/poli/poli-mata' : require "view/viewsUsers/poli/poliMata.php"; break;
+            case $me.'/poli/pelayananKB' : require "view/viewsUsers/poli/pelayananKB.php"; break;
+            case $me.'/poli/imunisasi' : require "view/viewsUsers/poli/imunisasi.php"; break;
+            case $me.'/poli/laboratorium' : require "view/viewsUsers/poli/laboratorium.php"; break;
             
             // Admin
             case $me.'/admin/dashboard' : require "view/viewAdmin/dashboard.php"; break;

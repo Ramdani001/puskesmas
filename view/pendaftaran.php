@@ -30,7 +30,7 @@
                     <a href="<?= $main_url?>poli/poli-gigi" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
                         <h5>Poli Gigi</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/tooth.png" width="130" alt="">
-                    </a>
+                    </a> 
                     <a href="<?= $main_url?>poli/poli-umum" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
                         <h5>Poli Umum</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/poli_umum.png" width="130" alt="">
@@ -39,17 +39,17 @@
                         <h5>Poli Paru-Paru</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/poli_paruparu.png" width="130" alt="">
                     </a>
-                    <a href="<?= $main_url?>poli/poli-kulit" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
-                        <h5>Poli Kulit</h5>
-                        <img src="<?= $main_url?>assets/img/login/icon/poli_kulit.png" width="130" alt="">
+                    <a href="<?= $main_url?>poli/pelayananKB" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
+                        <h5>Pelayanan KB</h5>
+                        <img src="<?= $main_url?>assets/img/login/icon/kb.png" width="130" alt="">
                     </a>
-                    <a href="<?= $main_url?>poli/poli-tht" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
-                        <h5>Poli THT</h5>
-                        <img src="<?= $main_url?>assets/img/login/icon/poli_tht.png" width="130" alt="">
+                    <a href="<?= $main_url?>poli/imunisasi" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
+                        <h5>Imunisasi</h5>
+                        <img src="<?= $main_url?>assets/img/login/icon/imunisasi.png" width="130" alt="">
                     </a>
-                    <a href="<?= $main_url?>poli/poli-mata" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
-                        <h5>Poli Mata</h5>
-                        <img src="<?= $main_url?>assets/img/login/icon/poli_mata.png" width="130" alt="">
+                    <a href="<?= $main_url?>poli/laboratorium" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
+                        <h5>Laboratorium</h5>
+                        <img src="<?= $main_url?>assets/img/login/icon/lab.png" width="130" alt="">
                     </a>
                     
                 </div>

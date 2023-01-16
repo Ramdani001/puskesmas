@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poli THT | Puskesmas</title>
+    <title>Poli Kulit | Puskesmas</title>
 
-    <?php include('view/layout/head.php'); ?>
+    <?php include('view/layout/head.php'); ?> 
 
     <link rel="stylesheet" href="<?= $main_url?>assets/style/styleIndex.css">
 
@@ -23,17 +23,14 @@
                 <i class="fa-solid fa-arrow-rotate-left" style=""></i>
             </a>
             <div class="row mt-2 pt-5">
-                <img class="col-8 w-50 mx-auto m-2 shadow" src="<?= $main_url?>assets/img/login/dr3.jpeg" width="150" alt="" style="border-radius: 10px !important;">
+                <img class="col-8 w-50 mx-auto m-2 shadow" src="<?= $main_url?>assets/img/login/dokterKB.png" width="150" alt="" style="border-radius: 10px !important;">
                 <h1 class="col-12 w-100 mx-auto pt-2 pb-1">
-                    dr.Ricky Richard, Sp.THT
+                     Yeni Susilawat, SpOG
                 </h1>
-                <span class="col-12">
-                    <i>(Poli THT)</i>
-                </span>
             </div>
             <div class="mainContentPendf w-100 m-2 pe-3 pt-5" >
                 <div class="card p-3 pt-5 shadow" style="border-radius: 15px;">
-                    <h4>Daftar Poli THT</h4>
+                    <h4>Daftar Pelayanan KB</h4>
                     <form action="">
                     <div class="mb-3 pb-3">
                         <div class="mb-3">
@@ -41,7 +38,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="keluhan"></textarea>
-                            <label for="floatingTextarea">Keluhan</label>
+                            <label for="floatingTextarea">Keterangan</label>
                         </div>
                         <div class="mb-3">
                             <input type="date" class="form-control" placeholder="Nama Lengkap Pasien" class="" name="tglCheck">
