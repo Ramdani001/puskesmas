@@ -1,0 +1,2 @@
+// tbl_user
+CREATE TABLE `db_goverment`.`tbl_user` (`id_user` INT NOT NULL AUTO_INCREMENT , `nama_lengkap` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , `no_telepon` VARCHAR(255) NOT NULL , PRIMARY KEY (`id_user`)) ENGINE = InnoDB;
