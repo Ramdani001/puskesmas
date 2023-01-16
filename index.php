@@ -27,13 +27,16 @@
             case $me.'/logout' : require "controller/LogoutController.php"; break;
 
             // Rizkan
-            case $me.'/ktp' : require "view/ktp.php"; break;
-            case $me.'/kk' : require "view/kk.php"; break;
-            case $me.'/kk' : require "view/kk.php"; break;
-            case $me.'/kelahiran' : require "view/kelahiran.php"; break;
-            case $me.'/kematian' : require "view/kematian.php"; break;
-            case $me.'/pindah' : require "view/pindah.php"; break;
-            case $me.'/datang' : require "view/datang.php"; break;
+            case $me.'/pendaftaran' : require "view/pendaftaran.php"; break;
+            case $me.'/obat' : require "view/obat.php"; break;
+            case $me.'/history' : require "view/history.php"; break;
+            case $me.'/poli/poli-gigi' : require "view/viewsUsers/poli/poliGigi.php"; break;
+            case $me.'/poli/poli-umum' : require "view/viewsUsers/poli/poliUmum.php"; break;
+            case $me.'/poli/poli-paruparu' : require "view/viewsUsers/poli/poliParuParu.php"; break;
+            case $me.'/poli/poli-kulit' : require "view/viewsUsers/poli/poliKulit.php"; break;
+            case $me.'/poli/poli-tht' : require "view/viewsUsers/poli/poliTht.php"; break;
+            case $me.'/poli/poli-mata' : require "view/viewsUsers/poli/poliMata.php"; break;
+            
             default: http_response_code(404); require "view/404.php" ; break;
         }
     }catch(\err){
