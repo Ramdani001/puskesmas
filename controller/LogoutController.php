@@ -4,7 +4,7 @@ $_SESSION = [];
 session_unset();
 session_destroy();
 
-header("Location: login_user");
+header("Location: ".$base_url.$project_location."/login_user");
 exit;
 
 ?>

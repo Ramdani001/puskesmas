@@ -13,8 +13,13 @@ if( isset($_POST["loginUser"]) ) {
         if( password_verify($password, $row["password"]) ) {
             $_SESSION["loginUser"] = true;
 
-            header("Location: beranda"); 
+            if ( $_POST["email"] == "admin@gmail.com") {
+                header("Location: admin/dashboard"); 
+                exit;
+            } else {
+                header("Location: beranda"); 
             exit;
+            }
         } else {
             echo "
             <script>
