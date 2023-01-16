@@ -6,7 +6,7 @@
     
     // BASE URL SESUAIKAN DENGAN LINK / HOST MASING - MASING, TERMASUK PROJECT LOCATION NYA JUGA
     $base_url = "http://localhost"; // Sesuaikan dengan Host Masing - Masing
-    $project_location = "/puskesmas/index.php"; // Sesuaikan dengan nama project yg digunakan
+    $project_location = "/puskesmas"; // Sesuaikan dengan nama project yg digunakan
 
     // Global Variable
     $vars = explode("/",$_SERVER['REQUEST_URI']);
@@ -43,10 +43,12 @@
             case $me.'/admin/dataDokter' : require "view/viewAdmin/dataDokter.php"; break;
             case $me.'/admin/dataObat' : require "view/viewAdmin/dataObat.php"; break;
             case $me.'/admin/dataPemesanan' : require "view/viewAdmin/dataPemesanan.php"; break;
+            case $me.'/admin/logout' : require "controller/LogoutController.php"; break;
+            case $me.'/admin/login_user' : header("Location: ".$base_url.$project_location."/login_user"); break;
             
             default: http_response_code(404); require "view/404.php" ; break;
         }
-    }catch(\err){
+    }catch(Exception $e){
         http_response_code(419);
     }
    

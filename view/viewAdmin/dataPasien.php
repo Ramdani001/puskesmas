@@ -20,7 +20,7 @@
     <div style="background-color: #788F76; height: 100%; position: fixed !important; width: 100%;">
         <div class=" card m-5">
             <div>
-                <a href="<?= $main_url?>index.php/admin/dashboard" class="fs-1 ps-2 text-dark text-decoration">
+                <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration">
                     <i class="fa-solid fa-arrow-rotate-left" style=""></i>
                 </a>
                 <h1 class="text-center">Data Pasien</h1>

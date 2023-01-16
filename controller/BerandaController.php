@@ -1,4 +1,6 @@
 <?php 
-    $_SESSION["isFailed"] = false;
-    $dataLogin = $_SESSION["dataLogin"];
+    if( !isset($_SESSION["loginUser"]) ) {
+        header("Location: login_user"); 
+        exit;
+    }
 ?>  

@@ -27,15 +27,15 @@
 
     <div class="btnAction w-100 mt-3">
         <div id="box" class="w-50 text-center d-flex mx-auto">
-            <a href="<?= $main_url?>index.php/pendaftaran" class="itemAction p-2 m-2 text-decoration-none">
+            <a href="<?= $main_url?>pendaftaran" class="itemAction p-2 m-2 text-decoration-none">
                 <h4>Pendaftaran Checkup</h4>
                 <img src="<?= $main_url?>assets/img/login/icon/home-pendaftaran.png" alt="" width="150">
             </a>
-            <a href="<?= $main_url?>index.php/obat" class="itemAction p-2 m-2 text-decoration-none">
+            <a href="<?= $main_url?>obat" class="itemAction p-2 m-2 text-decoration-none">
                 <h4>Pesan Obat-Obatan</h4>
                 <img src="<?= $main_url?>assets/img/login/icon/obat.png" alt="" width="150">
             </a>
-            <a href="<?= $main_url?>index.php/history" class="itemAction p-2 m-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalHistory">
+            <a href="<?= $main_url?>history" class="itemAction p-2 m-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalHistory">
                 <h4>History</h4>
                 <img src="<?= $main_url?>assets/img/login/icon/history.png" alt="" width="150">
             </a>

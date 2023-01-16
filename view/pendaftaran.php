@@ -27,27 +27,27 @@
             </div>
             <div class="mainContentPendf w-100">
                 <div class="row justify-content-around w-75 mx-auto">
-                    <a href="<?= $main_url?>index.php/poli/poli-gigi" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
+                    <a href="<?= $main_url?>poli/poli-gigi" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
                         <h5>Poli Gigi</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/tooth.png" width="130" alt="">
                     </a>
-                    <a href="<?= $main_url?>index.php/poli/poli-umum" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
+                    <a href="<?= $main_url?>poli/poli-umum" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
                         <h5>Poli Umum</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/poli_umum.png" width="130" alt="">
                     </a>
-                    <a href="<?= $main_url?>index.php/poli/poli-paruparu" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
+                    <a href="<?= $main_url?>poli/poli-paruparu" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
                         <h5>Poli Paru-Paru</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/poli_paruparu.png" width="130" alt="">
                     </a>
-                    <a href="<?= $main_url?>index.php/poli/poli-kulit" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
+                    <a href="<?= $main_url?>poli/poli-kulit" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
                         <h5>Poli Kulit</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/poli_kulit.png" width="130" alt="">
                     </a>
-                    <a href="<?= $main_url?>index.php/poli/poli-tht" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
+                    <a href="<?= $main_url?>poli/poli-tht" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
                         <h5>Poli THT</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/poli_tht.png" width="130" alt="">
                     </a>
-                    <a href="<?= $main_url?>index.php/poli/poli-mata" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
+                    <a href="<?= $main_url?>poli/poli-mata" class="text-decoration-none text-dark card m-2 p-2 col-3 ps-4 pe-4 shadow">
                         <h5>Poli Mata</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/poli_mata.png" width="130" alt="">
                     </a>

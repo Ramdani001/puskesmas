@@ -19,7 +19,7 @@
     
     <div id="container" class="container-fluid text-center">
         <div class="w-75 d-flex flex-row mx-auto card m-3 p-2 pb-5" style="background-color: #9DB69B !important;">
-            <a href="<?= $main_url?>index.php/pendaftaran" class="fs-1 text-dark text-decoration">
+            <a href="<?= $main_url?>pendaftaran" class="fs-1 text-dark text-decoration">
                 <i class="fa-solid fa-arrow-rotate-left" style=""></i>
             </a>
             <div class="row mt-2 pt-5">
