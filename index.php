@@ -6,7 +6,7 @@
     
     // BASE URL SESUAIKAN DENGAN LINK / HOST MASING - MASING, TERMASUK PROJECT LOCATION NYA JUGA
     $base_url = "http://localhost"; // Sesuaikan dengan Host Masing - Masing
-    $project_location = "/puskesmas/index.php"; // Sesuaikan dengan nama project yg digunakan
+    $project_location = "/puskesmas"; // Sesuaikan dengan nama project yg digunakan
 
     // Global Variable
     $vars = explode("/",$_SERVER['REQUEST_URI']);
@@ -46,7 +46,7 @@
             
             default: http_response_code(404); require "view/404.php" ; break;
         }
-    }catch(\err){
+    }catch(Exception $e){
         http_response_code(419);
     }
    

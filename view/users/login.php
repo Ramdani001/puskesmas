@@ -1,3 +1,5 @@
+<?php include('controller/LoginUserController.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,8 +51,9 @@
                                         <input type="password" class="form-control" id="password" placeholder="Masukan Kata Sandi" name="password">
                                         <label for="password">Masukan Kata Sandi</label>
                                     </div>
-                                        <button type="submit" name="btnLogin" class="mb-2 btn text-white ps-5 pe-5" style="background-color: #658C64 !important; border-radius: 20px !important; font-weight: bold; font-size: 20px;">
-                                            <a href="<?= $main_url?>index.php/beranda" class="text-decoration-none text-light">Login</a>
+                                        <button type="submit" name="loginUser" class="mb-2 btn text-white ps-5 pe-5" style="background-color: #658C64 !important; border-radius: 20px !important; font-weight: bold; font-size: 20px;">
+                                            <!-- <a href="<?= $main_url?>beranda" class="text-decoration-none text-light" >Login</a> -->
+                                            Login
                                         </button>
                                         <br>
                                         <span>Tidak Memiliki Akun?
@@ -99,7 +102,7 @@
                     <input class="form-control form-control-sm mb-4" type="text" placeholder="No Telepon" aria-label=".form-control-sm example" name="telp">
 
                     <div class="text-center mt-2">
-                        <button type="submit" name="btnRegister" class="btn text-white fw-semibold ps-5 pe-5" style="border-radius: 20px !important; background-color: #658C64 !important;">REGISTER</button>
+                        <button type="submit" name="registerUser" class="btn text-white fw-semibold ps-5 pe-5" style="border-radius: 20px !important; background-color: #658C64 !important;">REGISTER</button>
                     </div>
 
                 </div>
