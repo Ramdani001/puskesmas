@@ -17,7 +17,7 @@ if( isset($_POST["loginUser"]) ) {
                 header("Location: admin/dashboard"); 
                 exit;
             } else {
-                header("Location: beranda"); 
+                header("Location: beranda");
                 exit;
             }
         } else {

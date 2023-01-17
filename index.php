@@ -31,11 +31,11 @@
             case $me.'/obat' : require "view/obat.php"; break;
             case $me.'/history' : require "view/history.php"; break;
             case $me.'/poli/poli-gigi' : require "view/viewsUsers/poli/poliGigi.php"; break;
-            case $me.'/poli/poli-umum' : require "view/viewsUsers/poli/poliUmum.php"; break;
-            case $me.'/poli/poli-paruparu' : require "view/viewsUsers/poli/poliParuParu.php"; break;
+            case $me.'/poli/BPUmum' : require "view/viewsUsers/poli/BPUmum.php"; break;
+            case $me.'/poli/BPUsialanjut' : require "view/viewsUsers/poli/BPUsialanjut.php"; break;
             case $me.'/poli/pelayananKB' : require "view/viewsUsers/poli/pelayananKB.php"; break;
-            case $me.'/poli/imunisasi' : require "view/viewsUsers/poli/imunisasi.php"; break;
-            case $me.'/poli/laboratorium' : require "view/viewsUsers/poli/laboratorium.php"; break;
+            case $me.'/poli/mtbs' : require "view/viewsUsers/poli/mtbs.php"; break;
+            case $me.'/poli/igd' : require "view/viewsUsers/poli/igd.php"; break;
             
             // Admin
             case $me.'/admin/dashboard' : require "view/viewAdmin/dashboard.php"; break;
