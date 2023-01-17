@@ -1,3 +1,6 @@
+<?php
+    include('controller/DataObatController.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,20 +38,24 @@
                     <th>Harga Obat</th>
                     <th>Aksi</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Sakit Kepala</td>
-                    <td>Paracetamol</td>
-                    <td>10.000</td>
-                    <td class="">
-                        <a href="#" clas="pe-3" style="font-size: 18px !important; padding-right: 10px;" data-bs-toggle="modal" data-bs-target="#editObat">
-                            <i class="fa-solid fa-pen" style="color: green;"></i>
-                        </a>
-                        <a href="#" class="ps-2" style="font-size: 18px !important;">
-                            <i class="fa-solid fa-trash" style="color: red;"></i>
-                        </a>
-                    </td>
-                </tr>
+                <?php $i = 1 ?>
+                <?php foreach($dataObat as $obat): ?>
+                    <tr>
+                        <td><?= $i; ?></td>
+                        <td><?= $obat["typeObat"]; ?></td>
+                        <td><?= $obat["namaObat"]; ?></td>
+                        <td><?= $obat["hargaObat"]; ?></td>
+                        <td class="">
+                            <a href="#" clas="pe-3" style="font-size: 18px !important; padding-right: 10px;" data-bs-toggle="modal" data-bs-target="#editObat">
+                                <i class="fa-solid fa-pen" style="color: green;"></i>
+                            </a>
+                            <a href="hapusObat?id=<?= $obat["id"]; ?>" class="ps-2" style="font-size: 18px !important;">
+                                <i class="fa-solid fa-trash" style="color: red;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php $i++ ?>
+                <?php endforeach; ?>
                 </table>
             </div>
         </div>
@@ -63,7 +70,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="" method="post">
+            <form id="formTambahObat" action="" method="post">
             <div class="mb-3">
                 <input type="text" class="form-control" id="typeObat" placeholder="Type Obat" name="typeObat">
             </div>
@@ -71,15 +78,18 @@
                 <input type="text" class="form-control" id="namaObat" placeholder="Nama Obat" name="namaObat">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="Harga Obat" placeholder="Harga Obat" name="Harga Obat">
+                <input type="text" class="form-control" id="Harga Obat" placeholder="Harga Obat" name="hargaObat">
             </div>
-            </form>
+            <div class="mb-3">
+                <input type="date" class="form-control" id="expire" placeholder="Kadaluarsa" name="expire">
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" name="tambahObat" class="btn btn-primary">Simpan</button>
         </div>
-        </div>
+    </div>
+    </form>
     </div>
     </div>
 

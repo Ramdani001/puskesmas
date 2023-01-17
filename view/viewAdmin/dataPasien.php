@@ -1,3 +1,6 @@
+<?php
+    include('controller/DataPasienController.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,20 +37,26 @@
                     <th>Email</th>
                     <th>Aksi</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Rizkan Ramdani</td>
-                    <td>081223781292</td>
-                    <td>ramdani@gmail.com</td>
-                    <td class="">
-                        <a href="#" clas="pe-3" style="font-size: 18px !important; padding-right: 10px;">
-                            <i class="fa-solid fa-pen" style="color: green;"></i>
-                        </a>
-                        <a href="#" class="ps-2" style="font-size: 18px !important;">
-                            <i class="fa-solid fa-trash" style="color: red;"></i>
-                        </a>
-                    </td>
-                </tr>
+
+                <?php $i = 1 ?>
+                <?php foreach($dataPasien as $pasien): ?>
+                    <tr>
+                        <td><?= $i; ?></td>
+                        <td><?= $pasien["nama_lengkap"]; ?></td>
+                        <td><?= $pasien["no_telepon"]; ?></td>
+                        <td><?= $pasien["email"]; ?></td>
+                        <td class="">
+                            <a href="#" clas="pe-3" style="font-size: 18px !important; padding-right: 10px;" data-bs-toggle="modal" data-bs-target="#editObat">
+                                <i class="fa-solid fa-pen" style="color: green;"></i>
+                            </a>
+                            <a href="hapusObat.php?id=<?= $pasien["id"]; ?>" class="ps-2" style="font-size: 18px !important;">
+                                <i class="fa-solid fa-trash" style="color: red;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php $i++ ?>
+                <?php endforeach; ?>
+
                 </table>
             </div>
         </div>

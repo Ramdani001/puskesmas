@@ -1,4 +1,4 @@
-<?php include('controller/BerandaController.php'); ?>
+<?php include('controller/BerandaAdminController.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,8 @@
-<?php include('controller/BerandaController.php'); ?>
+<?php 
+    include('controller/BerandaController.php'); 
+    include('controller/PemesananObatController.php'); 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,74 +57,80 @@
         <div class="modal-body w-100">
             <h1>History Pendaftaran & Pemesanan</h1>
                 <div class="d-flex w-100 mx-auto text-justify">
-                    <div class="card me-3 w-75 mx-auto">
+                    
+                <?php foreach($dataPemesanan as $pesanan): ?>
+                    <?php if ($pesanan["typePendaftaran"]) { ?>
+                        <div class="card me-3 w-75 mx-auto">
+                            <div class="card-body m-3">
+                                <table cellspacing="2">
+                                    <tr class="mb-3">
+                                        <td class="pe-5">Tangal Pendaftaran</td>
+                                        <td class="ps-5">: <?= $pesanan["tglPemesanan"]; ?></td>
+                                    </tr>
+                                    <tr class="pb-3">
+                                        <td class="pe-5">Type Pendaftaran</td>
+                                        <td class="ps-5">: <?= $pesanan["typePendaftaran"]; ?></td>
+                                    </tr>
+                                    <tr class="pb-3">
+                                        <td class="pe-5">Nama Pasien</td>
+                                        <td class="ps-5">: <?= $pesanan["namaPasien"]; ?></td>
+                                    </tr>
+                                    <tr class="pb-3">
+                                        <td class="pe-5">Keluhan</td>
+                                        <td class="ps-5">: <?= $pesanan["keluhan"]; ?></td>
+                                    </tr>
+                                    <tr class="pb-3">
+                                        <td class="pe-5">Tanggal Checkup</td>
+                                        <td class="ps-5">: <?= $pesanan["tglCheckUp"]; ?></td>
+                                    </tr>
+                                    <tr class="pb-3">
+                                        <td class="pe-5">Status Pendaftaran</td>
+                                        <td class="ps-5">: 
+                                            <button class="btn btn-danger"><?= $pesanan["status"]; ?></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <div class="card me-3 w-75 mx-auto">
                         <div class="card-body m-3">
                             <table cellspacing="2">
                                 <tr class="mb-3">
-                                    <td class="pe-5">Tangal Pendaftaran</td>
-                                    <td class="ps-5">: 20-Januari-2023</td>
+                                    <td class="pe-5">Tangal Pemesanan</td>
+                                    <td class="ps-5">: <?= $pesanan["tglPemesanan"]; ?></td>
                                 </tr>
                                 <tr class="pb-3">
-                                    <td class="pe-5">Type Pendaftaran</td>
-                                    <td class="ps-5">: Poli Umum</td>
+                                    <td class="pe-5">Type Obat</td>
+                                    <td class="ps-5">: <?= $pesanan["typeObat"]; ?></td>
                                 </tr>
                                 <tr class="pb-3">
                                     <td class="pe-5">Nama Pasien</td>
-                                    <td class="ps-5">: Rizkan Ramdani</td>
+                                    <td class="ps-5">: <?= $pesanan["namaPasien"]; ?></td>
+                                </tr>
+                                <tr class="pb-3">
+                                    <td class="pe-5">Nama Obat</td>
+                                    <td class="ps-5">: <?= $pesanan["namaObat"]; ?></td>
+                                </tr>
+                                <tr class="pb-3">
+                                    <td class="pe-5">Harga Obat</td>
+                                    <td class="ps-5">: <?= $pesanan["hargaObat"]; ?></td>
                                 </tr>
                                 <tr class="pb-3">
                                     <td class="pe-5">Keluhan</td>
-                                    <td class="ps-5">: Sakit Demam</td>
-                                </tr>
-                                <tr class="pb-3">
-                                    <td class="pe-5">Tanggal Checkup</td>
-                                    <td class="ps-5">: 12:45, 21 Januari 2023</td>
+                                    <td class="ps-5">: <?= $pesanan["keluhan"]; ?></td>
                                 </tr>
                                 <tr class="pb-3">
                                     <td class="pe-5">Status Pendaftaran</td>
                                     <td class="ps-5">: 
-                                        <button class="btn btn-danger">Ditolak</button>
+                                        <button class="btn btn-warning"><?= $pesanan["status"]; ?></button>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
-                    <div class="card me-3 w-75 mx-auto">
-                        <div class="card-body m-3">
-                            <table cellspacing="2">
-                                <tr class="mb-3">
-                                    <td class="pe-5">Tangal Pemesanan</td>
-                                    <td class="ps-5">: 20-Januari-2023</td>
-                                </tr>
-                                <tr class="pb-3">
-                                    <td class="pe-5">Type Obat</td>
-                                    <td class="ps-5">: Sakit Kepala</td>
-                                </tr>
-                                <tr class="pb-3">
-                                    <td class="pe-5">Nama Pasien</td>
-                                    <td class="ps-5">: Rizkan Ramdani</td>
-                                </tr>
-                                <tr class="pb-3">
-                                    <td class="pe-5">Nama Obat</td>
-                                    <td class="ps-5">: Paracetamol</td>
-                                </tr>
-                                <tr class="pb-3">
-                                    <td class="pe-5">Harga Obat</td>
-                                    <td class="ps-5">: 10,000</td>
-                                </tr>
-                                <tr class="pb-3">
-                                    <td class="pe-5">Keluhan</td>
-                                    <td class="ps-5">: Gempa Di Koordinat Otak</td>
-                                </tr>
-                                <tr class="pb-3">
-                                    <td class="pe-5">Status Pendaftaran</td>
-                                    <td class="ps-5">: 
-                                        <button class="btn btn-warning">Diproses</button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                </div>
+                    <?php } ?>
+                <?php endforeach; ?>
             </div>
             <div class="w-75 text-center mx-auto mt-3">
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">Kembali Ke Menu</button>

@@ -1,4 +1,7 @@
-<?php include('controller/BerandaController.php'); ?>
+<?php
+    include('controller/BerandaController.php');
+    include('controller/PemesananObatController.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +54,6 @@
                         <h5>Anti Covid</h5>
                         <img src="<?= $main_url?>assets/img/login/icon/covid-19.png" width="130" alt="">
                     </a>
-                    
                 </div>
             </div>
         </div>
@@ -69,19 +71,20 @@
             </div>
             <div class="modal-body">
                 <form action="" method="post">
-                    
                     <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="obat">
+                        <select onchange="setHarga('hargaObatSK', 'floatingSelectSK')" class="form-select" id="floatingSelectSK" aria-label="Floating label select example" name="obat">
                             <option selected>-- Silahkan Pilih Obat --</option>
-                            <option value="1">Paracitamol</option>
-                            <option value="2">Sanmol</option>
-                            <option value="3">Obat Sakit Kepala</option>
+                            <?php foreach($dataObat as $obat): ?>
+                                <?php if($obat["typeObat"] == "Sakit Kepala") : ?>
+                                    <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                         </select>
-                        <label for="floatingSelect">Obat</label>
+                        <label for="floatingSelectSK">Obat</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga">
+                        <input id="hargaObatSK" type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga" disabled>
                         <label for="floatingInput">Harga</label>
                     </div>
 
@@ -90,12 +93,10 @@
                         <label for="floatingTextarea">Keluhan</label>
                     </div>
                     <div class="w-50 mx-auto">
-                        <button type="submit" class="btn btn-success w-100" name="btnSakitKepala" style="border-radius: 40px !important;">Pesan</button>
+                        <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
                     </div>
                 </form>
-
             </div>
-            
         </div>
     </div>
     </div>
@@ -111,19 +112,20 @@
         </div>
         <div class="modal-body">
             <form action="" method="post">
-
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="obat">
-                        <option selected>-- Silahkan Pilih Obat --</option>
-                        <option value="1">Paracitamol</option>
-                        <option value="2">Sanmol</option>
-                        <option value="3">Obat Sakit Kepala</option>
-                    </select>
-                    <label for="floatingSelect">Obat</label>
+                    <select onchange="setHarga('hargaObatBTK', 'floatingSelectBTK')" class="form-select" id="floatingSelectBTK" aria-label="Floating label select example" name="obat">
+                            <option selected>-- Silahkan Pilih Obat --</option>
+                            <?php foreach($dataObat as $obat): ?>
+                                <?php if($obat["typeObat"] == "Batuk & Flu") : ?>
+                                    <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select>
+                    <label for="floatingSelectBTK">Obat</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga">
+                    <input id="hargaObatBTK" type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga" disabled>
                     <label for="floatingInput">Harga</label>
                 </div>
 
@@ -132,7 +134,7 @@
                     <label for="floatingTextarea">Keluhan</label>
                 </div>
                 <div class="w-50 mx-auto">
-                    <button type="submit" class="btn btn-success w-100" name="btnBatuk" style="border-radius: 40px !important;">Pesan</button>
+                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
                 </div>
             </form>
         </div>
@@ -150,19 +152,20 @@
         </div>
         <div class="modal-body">
             <form action="" method="post">
-                    
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="obat">
+                    <select onchange="setHarga('hargaObatVTM', 'floatingSelectVTM')" class="form-select" id="floatingSelectVTM" aria-label="Floating label select example" name="obat">
                         <option selected>-- Silahkan Pilih Obat --</option>
-                        <option value="1">Paracitamol</option>
-                        <option value="2">Sanmol</option>
-                        <option value="3">Obat Sakit Kepala</option>
+                        <?php foreach($dataObat as $obat): ?>
+                            <?php if($obat["typeObat"] == "Vitamin") : ?>
+                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </select>
-                    <label for="floatingSelect">Obat</label>
+                    <label for="floatingSelectVTM">Obat</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga">
+                    <input id="hargaObatVTM" type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga" disabled>
                     <label for="floatingInput">Harga</label>
                 </div>
 
@@ -171,7 +174,7 @@
                     <label for="floatingTextarea">Keluhan</label>
                 </div>
                 <div class="w-50 mx-auto">
-                    <button type="submit" class="btn btn-success w-100" name="btnVitamin" style="border-radius: 40px !important;">Pesan</button>
+                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
                 </div>
             </form>
         </div>
@@ -188,31 +191,32 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        <form action="" method="post">
-                    
-                    <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="obat">
-                            <option selected>-- Silahkan Pilih Obat --</option>
-                            <option value="1">Paracitamol</option>
-                            <option value="2">Sanmol</option>
-                            <option value="3">Obat Sakit Kepala</option>
-                        </select>
-                        <label for="floatingSelect">Obat</label>
-                    </div>
-    
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga">
-                        <label for="floatingInput">Harga</label>
-                    </div>
-    
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="keluhan"></textarea>
-                        <label for="floatingTextarea">Keluhan</label>
-                    </div>
-                    <div class="w-50 mx-auto">
-                        <button type="submit" class="btn btn-success w-100" name="btnPencernaan" style="border-radius: 40px !important;">Pesan</button>
-                    </div>
-                </form>
+            <form action="" method="post">
+                <div class="form-floating mb-3">
+                    <select onchange="setHarga('hargaObatPCN', 'floatingSelectPCN')" class="form-select" id="floatingSelectPCN" aria-label="Floating label select example" name="obat">
+                        <option selected>-- Silahkan Pilih Obat --</option>
+                        <?php foreach($dataObat as $obat): ?>
+                            <?php if($obat["typeObat"] == "Pencernaan") : ?>
+                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelectPCN">Obat</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input id="hargaObatPCN" type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga" disabled>
+                    <label for="floatingInput">Harga</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="keluhan"></textarea>
+                    <label for="floatingTextarea">Keluhan</label>
+                </div>
+                <div class="w-50 mx-auto">
+                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
+                </div>
+            </form>
         </div>
         </div>
     </div>
@@ -227,31 +231,32 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        <form action="" method="post">
-                    
-                    <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="obat">
-                            <option selected>-- Silahkan Pilih Obat --</option>
-                            <option value="1">Paracitamol</option>
-                            <option value="2">Sanmol</option>
-                            <option value="3">Obat Sakit Kepala</option>
-                        </select>
-                        <label for="floatingSelect">Obat</label>
-                    </div>
-    
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga">
-                        <label for="floatingInput">Harga</label>
-                    </div>
-    
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="keluhan"></textarea>
-                        <label for="floatingTextarea">Keluhan</label>
-                    </div>
-                    <div class="w-50 mx-auto">
-                        <button type="submit" class="btn btn-success w-100" name="btnAntiNyeri" style="border-radius: 40px !important;">Pesan</button>
-                    </div>
-                </form>
+            <form action="" method="post">
+                <div class="form-floating mb-3">
+                    <select onchange="setHarga('hargaObatAN', 'floatingSelectAN')" class="form-select" id="floatingSelectAN" aria-label="Floating label select example" name="obat">
+                        <option selected>-- Silahkan Pilih Obat --</option>
+                        <?php foreach($dataObat as $obat): ?>
+                            <?php if($obat["typeObat"] == "Anti Nyeri") : ?>
+                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelectAN">Obat</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input id="hargaObatAN" type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga" disabled>
+                    <label for="floatingInput">Harga</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="keluhan"></textarea>
+                    <label for="floatingTextarea">Keluhan</label>
+                </div>
+                <div class="w-50 mx-auto">
+                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
+                </div>
+            </form>
         </div>
         </div>
     </div>
@@ -266,31 +271,32 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        <form action="" method="post">
-                    
-                    <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="obat">
-                            <option selected>-- Silahkan Pilih Obat --</option>
-                            <option value="1">Paracitamol</option>
-                            <option value="2">Sanmol</option>
-                            <option value="3">Obat Sakit Kepala</option>
-                        </select>
-                        <label for="floatingSelect">Obat</label>
-                    </div>
-    
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga">
-                        <label for="floatingInput">Harga</label>
-                    </div>
-    
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="keluhan"></textarea>
-                        <label for="floatingTextarea">Keluhan</label>
-                    </div>
-                    <div class="w-50 mx-auto">
-                        <button type="submit" class="btn btn-success w-100" name="btnCovid" style="border-radius: 40px !important;">Pesan</button>
-                    </div>
-                </form>
+            <form action="" method="post">
+                <div class="form-floating mb-3">
+                    <select onchange="setHarga('hargaObatAC', 'floatingSelectAC')" class="form-select" id="floatingSelectAC" aria-label="Floating label select example" name="obat">
+                        <option selected>-- Silahkan Pilih Obat --</option>
+                        <?php foreach($dataObat as $obat): ?>
+                            <?php if($obat["typeObat"] == "Anti Covid") : ?>
+                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
+                    <label for="floatingSelectAC">Obat</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input id="hargaObatAC" type="text" class="form-control" id="floatingInput" placeholder="Harga" name="harga" disabled>
+                    <label for="floatingInput">Harga</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="keluhan"></textarea>
+                    <label for="floatingTextarea">Keluhan</label>
+                </div>
+                <div class="w-50 mx-auto">
+                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
+                </div>
+            </form>
         </div>
         </div>
     </div>
@@ -298,6 +304,16 @@
 
     <!-- Script -->
     <?php include('view/layout/footer.php'); ?>
+
+    <script>
+        function setHarga(idInputHarga, idOptionObat) {
+            let inputHarga = document.getElementById(idInputHarga);
+            let getValue = document.getElementById(idOptionObat).value;
+            let hargaObat = JSON.parse(getValue).harga;
+
+            inputHarga.value = hargaObat;
+        }
+    </script>
 
 </body>
 </html>
