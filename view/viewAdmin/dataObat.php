@@ -46,12 +46,14 @@
                         <td><?= $obat["namaObat"]; ?></td>
                         <td><?= $obat["hargaObat"]; ?></td>
                         <td class="">
-                            <a href="#" clas="pe-3" style="font-size: 18px !important; padding-right: 10px;" data-bs-toggle="modal" data-bs-target="#editObat">
-                                <i class="fa-solid fa-pen" style="color: green;"></i>
-                            </a>
-                            <a href="hapusObat?id=<?= $obat["id"]; ?>" class="ps-2" style="font-size: 18px !important;">
-                                <i class="fa-solid fa-trash" style="color: red;"></i>
-                            </a>
+                            <form action="" method="post">
+                                <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editObat" name="">
+                                    <i class="fa-solid fa-pen" style="color: green;"></i>
+                                </button>
+                                <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
+                                    <i class="fa-solid fa-trash" style="color: red;"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     <?php $i++ ?>
