@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Waktu pembuatan: 16 Jan 2023 pada 18.09
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 17 Jan 2023 pada 17.12
 -- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.2.0
+-- Versi PHP: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_puskesmas`
+-- Database: `db_goverment`
 --
 
 -- --------------------------------------------------------
@@ -61,8 +61,18 @@ CREATE TABLE `tbl_obat` (
   `id` int(11) NOT NULL,
   `namaObat` varchar(255) NOT NULL,
   `hargaObat` varchar(255) NOT NULL,
-  `expire` date NOT NULL
+  `expire` date NOT NULL,
+  `typeObat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tbl_obat`
+--
+
+INSERT INTO `tbl_obat` (`id`, `namaObat`, `hargaObat`, `expire`, `typeObat`) VALUES
+(1, 'Inzana', '5000', '2023-01-02', 'Batuk & Flu'),
+(2, 'Oskadon', '3000', '2023-01-20', 'Sakit Kepala'),
+(3, 'VItacimin', '1500', '2023-01-25', 'Vitamin');
 
 -- --------------------------------------------------------
 
@@ -88,13 +98,23 @@ CREATE TABLE `tbl_pasien` (
 CREATE TABLE `tbl_pemesanan` (
   `id` int(11) NOT NULL,
   `tglPemesanan` date NOT NULL,
-  `typeObat` int(255) NOT NULL,
-  `namaPasien` int(255) NOT NULL,
-  `namaObat` int(255) NOT NULL,
+  `typeObat` varchar(255) NOT NULL,
+  `namaPasien` varchar(255) NOT NULL,
+  `namaObat` varchar(255) NOT NULL,
   `hargaObat` int(11) NOT NULL,
   `keluhan` varchar(255) NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tbl_pemesanan`
+--
+
+INSERT INTO `tbl_pemesanan` (`id`, `tglPemesanan`, `typeObat`, `namaPasien`, `namaObat`, `hargaObat`, `keluhan`, `status`) VALUES
+(5, '2023-01-17', 'kapsul', 'prasetyono', 'Inzana', 5000, 'qweasdawdasawsd', 'Diajukan'),
+(7, '2023-01-17', 'Vitamin', 'prasetyono', 'VItacimin', 1500, 'adas', 'Diajukan'),
+(8, '2023-01-17', 'Sakit Kepala', 'Prasetyono Putra', 'Oskadon', 3000, 'asd', 'Diajukan'),
+(9, '2023-01-17', 'Batuk & Flu', 'Prasetyono Putra', 'Inzana', 5000, 'dasdasdas', 'Diajukan');
 
 -- --------------------------------------------------------
 
@@ -107,17 +127,18 @@ CREATE TABLE `tbl_user` (
   `nama_lengkap` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `no_telepon` varchar(255) NOT NULL
+  `no_telepon` varchar(255) NOT NULL,
+  `src_gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id_user`, `nama_lengkap`, `email`, `password`, `no_telepon`) VALUES
-(1, 'Rizkan Ramdani', 'makaronipedas@ymail.com', '$2y$10$FBlsN7tIwEcqVHHWDDZdPuO8uhVow.uAsjGzWKDnN3TSwpwAZZ5FW', '321'),
-(2, 'Yobi', 'rizkanramdani0@gmail.com', '$2y$10$3RQ2aq2VX1RjMPXr5Ru1P..yqZ2HsffJRYZEi2l5cQyBP9IkeiCM6', '342'),
-(3, 'Rizkan Ramdani', 'admin@gmail.com', '$2y$10$nQho8VPj3MBTuzMP2bTsj.sAe/SXlqrdWLaIfAcdUP7iMx8Urv/.O', '1234');
+INSERT INTO `tbl_user` (`id_user`, `nama_lengkap`, `email`, `password`, `no_telepon`, `src_gambar`) VALUES
+(8, 'admin', 'admin@gmail.com', '$2y$10$JIOCUIfKegBb7Tkehsw6funGFS3nU3gmZT/FSjHV645gEoMBQpy1C', '1235', 'Pure Black Wallpaper - IdleWP.jpg'),
+(9, 'Prasetyono Putra', 'prasetyono@gmail.com', '$2y$10$AKCE/tmGeSaIBxsHY.mHwud1fPAFpDOAxQFXp8amotI0f5.dUFp32', '456', 'WAG1a0cf_400x400.jpg'),
+(11, 'asd', 'asd@gmail.com', '$2y$10$lF5L0EX9ojEJKxyHYCx48u2C7jL/oY3mLoAjlmd0E4OBLeejntSrm', '1254123213', '');
 
 -- --------------------------------------------------------
 
@@ -194,19 +215,19 @@ ALTER TABLE `tbl_dokter`
 -- AUTO_INCREMENT untuk tabel `tbl_obat`
 --
 ALTER TABLE `tbl_obat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pemesanan`
 --
 ALTER TABLE `tbl_pemesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `userpasien`
