@@ -54,7 +54,7 @@
                     <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration ">
                         <i class="fa-solid fa-arrow-rotate-left" style=""></i>
                     </a>
-                    
+                    <h1 class="text-center">Data Obat</h1>
                 </div>
                 <div class="p-3">
                     <button class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambahObat">Tambah</button>
@@ -67,7 +67,7 @@
                         <th>Expire</th>
                         <th>Aksi</th>
                     </tr>
-                    <?php $i = $awalData ?>
+                    <?php $i = $awalData + 1 ?>
                     <?php foreach($tbl_obat as $obat): ?>
                         <tr>
                             <td><?= $i; ?></td>
@@ -91,43 +91,44 @@
                     </table>
 
                     <div id="pagination" style="padding: 10px; backgound-color: white; text-align: right; font-size: 20px;">
-                    
-                    <!-- navigasi -->
-                    <div style=" display: flex; justify-content: center; width: 25%; float: right; background-color: white; text-align: center;">
-                        <div style=" padding: 4px; margin-right: 8px;" id="prevBtn">
-                            <?php if( $halamanAktif > 1 ) : ?>
-                                <div>
-                                    <form action="" method="post">
-                                        <input type="hidden" name="prev" value="<?= $halamanAktif - 1; ?>" >
-                                        <button name="halaman" class="btn btn-primary">Prev</button>
-                                    </form>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="">
-                            <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
-                                <?php if( $i == $halamanAktif ) : ?>
-                                        <a class="text-decoration-none text-dark bg-white shadow border p-2" style=" border-radius: 10px !important;font-size: 30px !important;" href="?halaman=<?= $i; ?>" style=""><?= $i; ?></a>
-                                    
-                                        <?php else : ?>
-                                            <a class="text-decoration-none p-2 text-dark" id="itemNone" href="?halaman=<?= $i; ?>"><?= $i; ?></a>
-                                        <?php endif; ?>
-                            <?php endfor; ?>
-                        </div>
                         
-                        <div style=" padding: 4px; margin-left: 8px;" id="nextBtn">
-                            <?php if( $halamanAktif < $jumlahHalaman ) : ?> 
-                                <form action="" method="post">
-                                    <input type="hidden" name="next" value="<?= $halamanAktif + 1; ?>">
-                                    <button name="halaman" class="btn btn-primary">Next</button>
-                                </form>
-                            </a>
-                            <?php endif; ?>
+                        <!-- navigasi -->
+                        <div style=" display: flex; justify-content: center; width: 25%; float: right; background-color: white; text-align: center;">
+                            <div style=" padding: 4px; margin-right: 8px;" id="prevBtn">
+                                <?php if( $halamanAktif > 1 ) : ?>
+                                    <div>
+                                        <form action="" method="post">
+                                            <input type="hidden" name="prev" value="<?= $halamanAktif - 1; ?>" >
+                                            <button name="halaman" class="btn btn-primary">Prev</button>
+                                        </form>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="">
+                                <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+                                    <?php if( $i == $halamanAktif ) : ?>
+                                            <a class="text-decoration-none text-dark bg-white shadow border p-2" style=" border-radius: 10px !important;font-size: 30px !important;" style=""><?= $i; ?></a>
+                                        
+                                            <?php else : ?>
+                                                <a class="text-decoration-none p-2 text-dark" id="itemNone"><?= $i; ?></a>
+                                            <?php endif; ?>
+                                <?php endfor; ?>
+                            </div>
+                            
+                            <div style=" padding: 4px; margin-left: 8px;" id="nextBtn">
+                                <?php if( $halamanAktif < $jumlahHalaman ) : ?> 
+                                    <form action="" method="post">
+                                        <input type="hidden" name="next" value="<?= $halamanAktif + 1; ?>">
+                                        <button name="halaman" class="btn btn-primary">Next</button>
+                                    </form>
+                                </a>
+                                <?php endif; ?>
+                            </div>
+
                         </div>
-
-                    </div>
-
-	        	</div>
+                        <!-- End Navigasi -->
+                        
+	        	    </div>
 
                 </div>
             </div>

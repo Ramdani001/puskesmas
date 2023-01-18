@@ -17,19 +17,19 @@
         <div class="w-75">
             <div id="navMenu" class="d-flex justify-content-center border ps-2 pe-2">
                 <div class="itemMenu m-2 ps-1 pe-1">
-                    <a href="<?= $main_url?>">Home</a>
+                    <a href="<?= $main_url?>admin/dashboard">Home</a>
                 </div>
                 <div class="itemMenu m-2 ps-1 pe-1">
-                    <a href="<?= $main_url?>dataPasien">Data Pasien</a>
+                    <a href="<?= $main_url?>admin/dataPasien">Data Pasien</a>
                 </div>
                 <div class="itemMenu m-2 ps-1 pe-1 ">
-                    <a href="<?= $main_url?>dataObat">Data Obat</a>
+                    <a href="<?= $main_url?>admin/dataObat">Data Obat</a>
                 </div>
                 <div class="itemMenu m-2 ps-1 pe-1 ">
-                    <a href="<?= $main_url?>dataDokter">Data Dokter</a>
+                    <a href="<?= $main_url?>admin/dataDokter">Data Dokter</a>
                 </div>
                     <div class="itemMenu m-2 ps-1 pe-1 ">
-                        <a href="<?= $main_url?>dataPemesanan">Data Pemesanan</a>
+                        <a href="<?= $main_url?>admin/dataPemesanan">Data Pemesanan</a>
                 </div>
             </div>
         </div>

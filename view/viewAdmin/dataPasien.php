@@ -18,7 +18,7 @@
 </head> 
 <body>
 
-    <?php include('view/layout/navbar.php'); ?> 
+    <?php include('view/layout/navbarAdmin.php'); ?> 
 
     <div style="background-color: #788F76; height: 100%; position: fixed !important; width: 100%;">
         <div class=" card m-5">

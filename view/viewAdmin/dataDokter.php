@@ -3,16 +3,16 @@
 
 
     $jumlahDataPerHalaman = 5;
-    $jumlahData = count(query("SELECT * FROM tbl_obat"));
+    $jumlahData = count(query("SELECT * FROM tbl_dokter"));
     $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
     $halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
     $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
-    $tbl_obat = query("SELECT * FROM tbl_obat LIMIT $awalData, $jumlahDataPerHalaman");
+    $tbl_dokter = query("SELECT * FROM tbl_dokter LIMIT $awalData, $jumlahDataPerHalaman");
 
     if (isset($_POST["halaman"])) {
         $jumlahDataPerHalaman = 5;
-        $jumlahData = count(query("SELECT * FROM tbl_obat"));
+        $jumlahData = count(query("SELECT * FROM tbl_dokter"));
         $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
         $x = 1;
 
@@ -25,7 +25,7 @@
         $halamanAktif = ( isset($x) ) ? $x : 1;
         $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
-        $tbl_obat = query("SELECT * FROM tbl_obat LIMIT $awalData, $jumlahDataPerHalaman");
+        $tbl_dokter = query("SELECT * FROM tbl_dokter LIMIT $awalData, $jumlahDataPerHalaman");
     }
 
 
@@ -47,7 +47,7 @@
 </head> 
 <body>
 
-    <?php include('view/layout/navbar.php'); ?> 
+    <?php include('view/layout/navbarAdmin.php'); ?>  
 
     <div class="pb-2" style="background-color: #788F76; height: 100%; width: 100%;">
         <div class="p-5">
@@ -66,15 +66,17 @@
                     <th>Nama Poli</th>
                     <th>Nama Dokter</th>
                     <th>Spesialis</th>
-                    <th>Gambar</th>
+                    <th>Tanggal Masuk</th>
+                    <th>Aksi</th>
                 </tr>
                 <?php $i = 1 ?>
-                <?php foreach($dataObat as $obat): ?>
+                <?php foreach($tbl_dokter as $dokter): ?>
                     <tr>
                         <td><?= $i; ?></td>
-                        <td><?= $obat["typeObat"]; ?></td>
-                        <td><?= $obat["namaObat"]; ?></td>
-                        <td><?= $obat["hargaObat"]; ?></td>
+                        <td><?= $dokter["namaPoli"]; ?></td>
+                        <td><?= $dokter["namaDokter"]; ?></td>
+                        <td><?= $dokter["spesialis"]; ?></td>
+                        <td><?= $dokter["tglMasuk"]; ?></td>
                         <td class="">
                             <form action="" method="post">
                                 <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editObat" name="">
@@ -89,6 +91,44 @@
                     <?php $i++ ?>
                 <?php endforeach; ?>
                 </table>
+
+
+                    <!-- navigasi -->
+                    <div style=" display: flex; justify-content: center; width: 25%; float: right; background-color: white; text-align: center;">
+                            <div style=" padding: 4px; margin-right: 8px;" id="prevBtn">
+                                <?php if( $halamanAktif > 1 ) : ?>
+                                    <div>
+                                        <form action="" method="post">
+                                            <input type="hidden" name="prev" value="<?= $halamanAktif - 1; ?>" >
+                                            <button name="halaman" class="btn btn-primary">Prev</button>
+                                        </form>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="">
+                                <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+                                    <?php if( $i == $halamanAktif ) : ?>
+                                            <a class="text-decoration-none text-dark bg-white shadow border p-2" style=" border-radius: 10px !important;font-size: 30px !important;" style=""><?= $i; ?></a>
+                                        
+                                            <?php else : ?>
+                                                <a class="text-decoration-none p-2 text-dark" id="itemNone"><?= $i; ?></a>
+                                            <?php endif; ?>
+                                <?php endfor; ?>
+                            </div>
+                            
+                            <div style=" padding: 4px; margin-left: 8px;" id="nextBtn">
+                                <?php if( $halamanAktif < $jumlahHalaman ) : ?> 
+                                    <form action="" method="post">
+                                        <input type="hidden" name="next" value="<?= $halamanAktif + 1; ?>">
+                                        <button name="halaman" class="btn btn-primary">Next</button>
+                                    </form>
+                                </a>
+                                <?php endif; ?>
+                            </div>
+
+                        </div>
+                        <!-- End Navigasi -->
+
             </div>
         </div>
         </div>
@@ -105,16 +145,25 @@
         <div class="modal-body">
             <form id="formTambahObat" action="" method="post">
             <div class="mb-3">
-                <input type="text" class="form-control" id="typeObat" placeholder="Type Obat" name="typeObat">
+                <select name="namaPoli" id="namaPoli" class="form-select" aria-label="Default select example">
+                    <option selected>-- Pilih Poli --</option>
+                    <option value="Poli Gigi">Poli Gigi</option>
+                    <option value="BP Umum">BP Umum</option>
+                    <option value="BP Usia Lanjut">BP Usia Lanjut</option>
+                    <option value="Poli KIA & KB">Poli KIA & KB</option>
+                    <option value="MTBS">MTBS</option>
+                    <option value="IGD">IGD</option>
+                </select>
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="namaObat" placeholder="Nama Obat" name="namaObat">
+                <input type="text" class="form-control" id="namaDokter" placeholder="Nama Dokter" name="namaDokter">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="Harga Obat" placeholder="Harga Obat" name="hargaObat">
+                <input type="text" class="form-control" id="Spesialis" placeholder="Spesialis" name="spesialis">
             </div>
             <div class="mb-3">
-                <input type="date" class="form-control" id="expire" placeholder="Kadaluarsa" name="expire">
+                <label for="" >Tanggal Masuk</label>
+                <input type="date" class="form-control" id="tglMasuk" placeholder="Kadaluarsa" name="tglMasuk">
             </div>
         </div>
         <div class="modal-footer">
