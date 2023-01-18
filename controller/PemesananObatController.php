@@ -3,7 +3,7 @@
 
     $dataObat = query("SELECT * FROM tbl_obat");
     $namaLengkap = $_SESSION["namaLengkap"];
-    $dataPemesanan = query("SELECT * FROM tbl_pemesanan WHERE namaPasien ='$namaLengkap'");
+    $dataPemesanan = query("SELECT * FROM tbl_pemesanan_obat WHERE namaPasien ='$namaLengkap'");
 
     // Simpan pemesanan obat ke database
     if( isset($_POST["btnPesanObat"]) ) {
@@ -15,8 +15,9 @@
         $hargaObat = $php_array=  json_decode($_POST["obat"],true)["harga"];
         $keluhan = $_POST["keluhan"];
         $status = "Diajukan";
+        $idUser = $_SESSION["idUser"];
 
-        $query = "INSERT INTO tbl_pemesanan VALUES ('', '$tglPemesanan', '$typeObat', '$namaPasien', '$namaObat', '$hargaObat', '$keluhan', '$status')";
+        $query = "INSERT INTO tbl_pemesanan_obat VALUES ('', '$tglPemesanan', '$typeObat', '$namaPasien', '$namaObat', '$hargaObat', '$keluhan', '$status', '$idUser')";
         mysqli_query($conn, $query);
 
         if (mysqli_affected_rows($conn) > 0) {

@@ -14,6 +14,7 @@
                 $_SESSION["loginUser"] = true;
                 $_SESSION["namaLengkap"] = $row["nama_lengkap"];
                 $_SESSION["email"] = $row["email"];
+                $_SESSION["idUser"] = $row["id_user"];
 
                 if ( $_POST["email"] == "admin@gmail.com") {
                     $_SESSION["loginAdmin"] = true;

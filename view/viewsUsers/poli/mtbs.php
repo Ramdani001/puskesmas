@@ -1,5 +1,7 @@
-<?php include('controller/BerandaController.php'); ?>
-
+<?php
+    include('controller/BerandaController.php');
+    include('controller/PemesananPoliController.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +27,11 @@
             <div class="mainContentPendf w-100 m-2 pe-3 pt-5" >
                 <div class="card p-3 pt-5 shadow mx-auto w-50" style="border-radius: 15px;">
                     <h4>Daftar Imunisasi</h4>
-                    <form action="">
+                    <form action="" method="post">
                     <div class="mb-3 pb-3">
                         <div class="mb-3">
                             <input type="text" class="form-control" placeholder="Nama Lengkap Pasien" class="" name="namePasien">
+                            <input type="hidden" name="typePoli" value="Poli MTBS">
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" placeholder="Masukan NIK" id="floatingTextarea" name="nik"></input>
@@ -36,10 +39,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="tgllahir" class="">Tanggal Lahir</label>
-                            <input type="date" class="form-control" placeholder="Nama Lengkap Pasien" class="" name="tglCheck">
+                            <input type="date" class="form-control" class="" name="tglLahir">
                         </div>
                         <div class="mb-3 pt-3">
-                            <button class="btn btn-success ps-5 pe-5">Daftar</button>
+                            <button class="btn btn-success ps-5 pe-5" type="submit" name="submitPoli">Daftar</button>
                         </div>
                     </div>
                     </form>
