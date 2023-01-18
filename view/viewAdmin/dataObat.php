@@ -30,7 +30,7 @@
             </div>
             <div class="p-5 ">
                 <button class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambahObat">Tambah</button>
-                <table class="table table-dark table-striped text-center">
+                <table class="table table-striped table-hover text-center w-100">
                 <tr>
                     <th>No</th>
                     <th>Type Obat</th>
@@ -74,7 +74,16 @@
         <div class="modal-body">
             <form id="formTambahObat" action="" method="post">
             <div class="mb-3">
-                <input type="text" class="form-control" id="typeObat" placeholder="Type Obat" name="typeObat">
+                <!-- <input type="text" class="form-control" id="typeObat" placeholder="Type Obat" name="typeObat"> -->
+                <select name="typeObat" id="typeObat" class="form-select" aria-label="Default select example">
+                    <option selected>-- Pilih Type Obat --</option>
+                    <option value="Sakit Kepala">Sakit Kepala</option>
+                    <option value="Batuk & Flu">Batuk & Flu</option>
+                    <option value="Vitamin">Vitamin</option>
+                    <option value="Pencernaan">Pencernaan</option>
+                    <option value="Anti Nyeri">Anti Nyeri</option>
+                    <option value="Anti Covid">Anti Covid</option>
+                </select>
             </div>
             <div class="mb-3">
                 <input type="text" class="form-control" id="namaObat" placeholder="Nama Obat" name="namaObat">

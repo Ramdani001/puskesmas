@@ -1,5 +1,5 @@
 <?php
-    include('controller/DataObatController.php');
+    include('controller/PemesananObatController.php');
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +30,17 @@
             </div>
             <div class="p-5 ">
                 <button class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambahObat">Tambah</button>
-                <table class="table table-dark table-striped text-center">
+                <table class="table table-striped table-hover text-center w-100">
                 <tr>
                     <th>No</th>
+                    <th>Tanggal Pemesanan</th>
                     <th>Type Obat</th>
+                    <th>Nama Pemesanan</th>
+                    <th>Nama Pasien</th>
                     <th>Nama Obat</th>
                     <th>Harga Obat</th>
-                    <th>Aksi</th>
+                    <th>Keluhan</th>
+                    <th>Status</th>
                 </tr>
                 <?php $i = 1 ?>
                 <?php foreach($dataObat as $obat): ?>

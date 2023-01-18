@@ -13,7 +13,7 @@
    
     <?php include('view/layout/head.php'); ?>
     <link rel="stylesheet" href="<?= $main_url?>assets/style/styleIndex.css">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
 
 </head> 
 <body>
@@ -29,19 +29,19 @@
                 <h1 class="text-center">Data Pasien</h1>
             </div>
             <div class="p-5 ">
-                <table class="table table-dark table-striped text-center">
+                <table class="table table-striped table-hover text-center w-100">
                 <tr>
                     <th>No</th>
                     <th>Nama Pasien</th>
                     <th>Telpon</th>
-                    <th>Email</th>
+                    <th>Email</th> 
                     <th>Aksi</th>
                 </tr>
 
                 <?php $i = 1 ?>
                 <?php foreach($dataPasien as $pasien): ?>
                     <tr>
-                        <td><?= $i; ?></td>
+                        <td><?= $i; ?></td> 
                         <td><?= $pasien["nama_lengkap"]; ?></td>
                         <td><?= $pasien["no_telepon"]; ?></td>
                         <td><?= $pasien["email"]; ?></td>
@@ -58,8 +58,10 @@
                     </tr>
                     <?php $i++ ?>
                 <?php endforeach; ?>
-
                 </table>
+		</div>
+
+
             </div>
         </div>
     </div>
@@ -68,6 +70,5 @@
 
     <!-- Script -->
     <?php include('view/layout/footer.php'); ?>
-
 </body>
 </html>

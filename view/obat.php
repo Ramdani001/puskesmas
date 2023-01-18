@@ -23,9 +23,9 @@
     <div id="container" class="container-fluid text-center">
         <div class="w-75 mx-auto card m-3 pb-2">
             <div class="d-flex flex-row">
-                <div class="fs-2 ms-3">
+                <a href="<?= $main_url?>" class="fs-2 ms-3">
                     <i class="fa-solid fa-arrow-rotate-left" style=""></i>
-                </div>
+                </a>
                 <h1 class="w-100 mx-auto pt-2 pb-1">Pilih Obat Yang dibutuhkan</h1>
             </div>
             <div class="mainContentPendf w-100">

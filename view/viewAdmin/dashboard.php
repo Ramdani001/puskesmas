@@ -15,7 +15,7 @@
 </head> 
 <body>
 
-    <?php include('view/layout/navbar.php'); ?>
+    <?php include('view/layout/navbarAdmin.php'); ?>
 
     <div class="btnAction w-100" style="margin-top: 10%;">
         <div id="box" class="w-100 text-center d-flex justify-content-center">
@@ -28,7 +28,7 @@
                 <img src="<?= $main_url?>assets/img/admin/icon/dataObat.png" alt="" width="150">
             </a>
             <a href="<?= $main_url?>admin/dataDokter" class="itemAction p-3 mx-5 m-2 text-decoration-none">
-                <h4>Data Pemesanan</h4>
+                <h4>Data Dokter</h4>
                 <img src="<?= $main_url?>assets/img/admin/icon/dataDoktor.png" alt="" width="150">
             </a>
             <a href="<?= $main_url?>admin/dataPemesanan" class="itemAction p-3 mx-5 m-2 text-decoration-none">
