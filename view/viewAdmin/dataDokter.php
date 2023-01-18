@@ -78,7 +78,7 @@
                         <td><?= $dokter["spesialis"]; ?></td>
                         <td><?= $dokter["tglMasuk"]; ?></td>
                         <td class="">
-                            <form action="" method="post">
+                            <form action="#" method="post">
                                 <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editObat" name="">
                                     <i class="fa-solid fa-pen" style="color: green;"></i>
                                 </button>
@@ -180,19 +180,22 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="editObatLabel">Edit Obat</h1>
+            <h1 class="modal-title fs-5" id="editObatLabel">Edit Dokter</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form action="" method="post">
             <div class="mb-3">
-                <input type="text" class="form-control" id="typeObat" placeholder="Type Obat" name="typeObat">
+                <input type="text" class="form-control" id="namaPoli" placeholder="Nama Poli" name="namaPoli">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="namaObat" placeholder="Nama Obat" name="namaObat">
+                <input type="text" class="form-control" id="namaDokter" placeholder="Nama Dokter" name="namaDokter">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="Harga Obat" placeholder="Harga Obat" name="Harga Obat">
+                <input type="text" class="form-control" id="spesialis" placeholder="spesialis" name="spesialis">
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" id="tglMasuk" placeholder="tglMasuk" name="tglMasuk">
             </div>
             </form>
         </div>

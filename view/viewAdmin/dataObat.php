@@ -90,8 +90,6 @@
                     <?php endforeach; ?>
                     </table>
 
-                    <div id="pagination" style="padding: 10px; backgound-color: white; text-align: right; font-size: 20px;">
-                        
                         <!-- navigasi -->
                         <div style=" display: flex; justify-content: center; width: 25%; float: right; background-color: white; text-align: center;">
                             <div style=" padding: 4px; margin-right: 8px;" id="prevBtn">
@@ -127,8 +125,8 @@
 
                         </div>
                         <!-- End Navigasi -->
-                        
-	        	    </div>
+
+
 
                 </div>
             </div>
@@ -194,6 +192,9 @@
             </div>
             <div class="mb-3">
                 <input type="text" class="form-control" id="Harga Obat" placeholder="Harga Obat" name="Harga Obat">
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" id="expire" placeholder="Harga Obat" name="Harga Obat">
             </div>
             </form>
         </div>
