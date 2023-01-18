@@ -126,8 +126,6 @@
                         </div>
                         <!-- End Navigasi -->
 
-
-
                 </div>
             </div>
         </div>
@@ -177,7 +175,7 @@
     <!-- Modal Edit -->
     <div class="modal fade" id="editObat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editObatLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content"> 
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="editObatLabel">Edit Obat</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

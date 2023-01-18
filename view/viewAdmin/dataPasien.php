@@ -49,8 +49,42 @@
 
     <?php include('view/layout/navbarAdmin.php'); ?> 
 
+
+
+<!-- Modal Edit -->
+<div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editDataLabel">Edit Data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <form id="formeditPasien" action="" method="post">
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <input type="date" class="form-control" id="tglPemesanan" placeholder="Tanggal Pemesanan" name="tglPemesanan" value="">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="typePoli" placeholder="Type Poli" name="typePoli" value="">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="namaPasien" placeholder="Nama Pasien" name="namaPasien" value="">
+                    </div>    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" name="tambahObat" class="btn btn-primary">Update</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
     <div style="background-color: #788F76; height: 100%; position: fixed !important; width: 100%;">
-        <div class=" card m-5">
+    <div class=" card m-5">
             <div>
                 <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration">
                     <i class="fa-solid fa-arrow-rotate-left" style=""></i>
@@ -99,7 +133,7 @@
                                 <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#changeStatus" name="">
                                     Status
                                 </button>
-                                <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editObat" name="">
+                                <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editData" name="">
                                     <i class="fa-solid fa-pen" style="color: green;"></i>
                                 </button>
                                 <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
@@ -114,53 +148,51 @@
 
                 <!-- navigasi -->
                 <div style=" display: flex; justify-content: center; width: 25%; float: right; background-color: white; text-align: center;">
-                            <div style=" padding: 4px; margin-right: 8px;" id="prevBtn">
-                                <?php if( $halamanAktif > 1 ) : ?>
-                                    <div>
-                                        <form action="" method="post">
-                                            <input type="hidden" name="prev" value="<?= $halamanAktif - 1; ?>" >
-                                            <button name="halaman" class="btn btn-primary">Prev</button>
-                                        </form>
-                                    </div>
-                                <?php endif; ?>
+                    <div style=" padding: 4px; margin-right: 8px;" id="prevBtn">
+                        <?php if( $halamanAktif > 1 ) : ?>
+                            <div>
+                                <form action="" method="post">
+                                    <input type="hidden" name="prev" value="<?= $halamanAktif - 1; ?>" >
+                                    <button name="halaman" class="btn btn-primary">Prev</button>
+                                </form>
                             </div>
-                            <div class="">
-                                <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
-                                    <?php if( $i == $halamanAktif ) : ?>
-                                            <a class="text-decoration-none text-dark bg-white shadow border p-2" style=" border-radius: 10px !important;font-size: 30px !important;" style=""><?= $i; ?></a>
-                                        
-                                            <?php else : ?>
-                                                <a class="text-decoration-none p-2 text-dark" id="itemNone"><?= $i; ?></a>
-                                            <?php endif; ?>
-                                <?php endfor; ?>
-                            </div>
-                            
-                            <div style=" padding: 4px; margin-left: 8px;" id="nextBtn">
-                                <?php if( $halamanAktif < $jumlahHalaman ) : ?> 
-                                    <form action="" method="post">
-                                        <input type="hidden" name="next" value="<?= $halamanAktif + 1; ?>">
-                                        <button name="halaman" class="btn btn-primary">Next</button>
-                                    </form>
-                                </a>
-                                <?php endif; ?>
-                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="">
+                        <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+                            <?php if( $i == $halamanAktif ) : ?>
+                                    <a class="text-decoration-none text-dark bg-white shadow border p-2" style=" border-radius: 10px !important;font-size: 30px !important;" style=""><?= $i; ?></a>
+                                
+                                    <?php else : ?>
+                                        <a class="text-decoration-none p-2 text-dark" id="itemNone"><?= $i; ?></a>
+                                    <?php endif; ?>
+                        <?php endfor; ?>
+                    </div>
+                    
+                    <div style=" padding: 4px; margin-left: 8px;" id="nextBtn">
+                        <?php if( $halamanAktif < $jumlahHalaman ) : ?> 
+                            <form action="" method="post">
+                                <input type="hidden" name="next" value="<?= $halamanAktif + 1; ?>">
+                                <button name="halaman" class="btn btn-primary">Next</button>
+                            </form>
+                        </a>
+                        <?php endif; ?>
+                    </div>
 
-                        </div>
+                 </div>
                         <!-- End Navigasi -->
 
-		</div>
-
-
+		        </div>
             </div>
         </div>
     </div>
 
     <!-- Modal Change Status -->
     <div class="modal fade" id="changeStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changeStatusLabel" aria-hidden="true">
-    <div class="modal-dialog">
+         <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="changeStatusLabel">Tambah Obat</h1>
+            <h1 class="modal-title fs-5" id="changeStatusLabel">Edit Status</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -190,7 +222,6 @@
             </form>
         </div>
     </div>
-
     <!-- Script -->
     <?php include('view/layout/footer.php'); ?>
 </body>

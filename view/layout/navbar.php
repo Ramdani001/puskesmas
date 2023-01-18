@@ -26,10 +26,10 @@
             </div>
             <div class="itemMenu m-2 me-2 ps-3 pe-3">
                 <a href="<?= $main_url?>history">History</a>
+            </div>
         </div>
-    </div>
-    <a href="<?php $main_url?>logout" class="">
-        <img src="<?= $main_url?>assets/img/login/icon/logout.png" width="40" alt="">
-    </a>
+        <a href="<?php $main_url?>logout" class="">
+            <img src="<?= $main_url?>assets/img/login/icon/logout.png" width="40" alt="">
+        </a>
   </div>
 </nav>

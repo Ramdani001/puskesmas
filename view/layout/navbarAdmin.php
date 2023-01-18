@@ -6,7 +6,7 @@
 ?>
 
 <nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
+    <div class="container-fluid me-5">
         <a class="navbar-brand align-center">
             <?php if($dataAkun["src_gambar"] && file_exists("assets/img/upload_images/".$dataAkun['src_gambar'])) { ?>
                 <img src="<?= $main_url?>assets/img/upload_images/<?= $dataAkun["src_gambar"]?>" alt="" width="40"> <?= $dataAkun["nama_lengkap"]?>
@@ -14,8 +14,8 @@
                 <img src="<?= $main_url?>assets/img/login/icon/profile.png" alt="" width="40"> <?= $dataAkun["nama_lengkap"]?>
             <?php } ?>
         </a>
-        <div class="w-75">
-            <div id="navMenu" class="d-flex justify-content-center border ps-2 pe-2">
+        <div class=" border pe-5" style="width: 80% !important; margin-right: 10px !important;">
+            <div id="navMenu" class="d-flex justify-content-start border ps-2 w-75">
                 <div class="itemMenu m-2 ps-1 pe-1">
                     <a href="<?= $main_url?>admin/dashboard">Home</a>
                 </div>
@@ -27,6 +27,9 @@
                 </div>
                 <div class="itemMenu m-2 ps-1 pe-1 ">
                     <a href="<?= $main_url?>admin/dataDokter">Data Dokter</a>
+                </div>
+                <div class="itemMenu m-2 ps-1 pe-1 ">
+                    <a href="<?= $main_url?>admin/dataUser">Data User</a>
                 </div>
                     <div class="itemMenu m-2 ps-1 pe-1 ">
                         <a href="<?= $main_url?>admin/dataPemesanan">Data Pemesanan</a>

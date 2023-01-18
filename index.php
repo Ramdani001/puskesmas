@@ -41,8 +41,9 @@
             case $me.'/admin/dashboard' : require "view/viewAdmin/dashboard.php"; break;
             case $me.'/admin/dataPasien' : require "view/viewAdmin/dataPasien.php"; break;
             case $me.'/admin/dataDokter' : require "view/viewAdmin/dataDokter.php"; break;
-            case $me.'/admin/dataObat' : require "view/viewAdmin/dataObat.php"; break;
+            case $me.'/admin/dataObat' : require "view/viewAdmin/dataObat.php"; break; 
             case $me.'/admin/dataPemesanan' : require "view/viewAdmin/dataPemesanan.php"; break;
+            case $me.'/admin/dataUser' : require "view/viewAdmin/dataUser.php"; break;
             case $me.'/admin/logout' : require "controller/LogoutController.php"; break;
             case $me.'/admin/login_user' : header("Location: ".$base_url.$project_location."/login_user"); break;
             
