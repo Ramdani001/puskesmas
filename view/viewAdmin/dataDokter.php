@@ -1,5 +1,34 @@
 <?php
     include('controller/DataObatController.php');
+
+
+    $jumlahDataPerHalaman = 5;
+    $jumlahData = count(query("SELECT * FROM tbl_obat"));
+    $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+    $halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
+    $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
+
+    $tbl_obat = query("SELECT * FROM tbl_obat LIMIT $awalData, $jumlahDataPerHalaman");
+
+    if (isset($_POST["halaman"])) {
+        $jumlahDataPerHalaman = 5;
+        $jumlahData = count(query("SELECT * FROM tbl_obat"));
+        $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+        $x = 1;
+
+        if (isset($_POST["next"])) {
+            $x = $_POST["next"];
+        }else if (isset($_POST["prev"])) {
+            $x = $_POST["prev"];
+        }
+
+        $halamanAktif = ( isset($x) ) ? $x : 1;
+        $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
+
+        $tbl_obat = query("SELECT * FROM tbl_obat LIMIT $awalData, $jumlahDataPerHalaman");
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +37,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Obat | Admin</title>
+    <title>Data Dokter | Admin</title>
 
    
     <?php include('view/layout/head.php'); ?>
@@ -20,13 +49,14 @@
 
     <?php include('view/layout/navbar.php'); ?> 
 
-    <div class="pb-2" style="background-color: #788F76; height: 100%; position: fixed !important; width: 100%;">
+    <div class="pb-2" style="background-color: #788F76; height: 100%; width: 100%;">
+        <div class="p-5">
         <div class="card m-5 h-100">
             <div>
                 <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration">
                     <i class="fa-solid fa-arrow-rotate-left" style=""></i>
                 </a>
-                <h1 class="text-center">Data Obat</h1>
+                <h1 class="text-center">Data Dokter</h1>
             </div>
             <div class="p-5 ">
                 <button class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambahObat">Tambah</button>
@@ -60,6 +90,7 @@
                 <?php endforeach; ?>
                 </table>
             </div>
+        </div>
         </div>
     </div>
 

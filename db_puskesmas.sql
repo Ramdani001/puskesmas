@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jan 2023 pada 17.12
+-- Waktu pembuatan: 18 Jan 2023 pada 13.26
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_goverment`
+-- Database: `db_puskesmas`
 --
 
 -- --------------------------------------------------------
@@ -92,29 +92,61 @@ CREATE TABLE `tbl_pasien` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pemesanan`
+-- Struktur dari tabel `tbl_pemesanan_obat`
 --
 
-CREATE TABLE `tbl_pemesanan` (
+CREATE TABLE `tbl_pemesanan_obat` (
   `id` int(11) NOT NULL,
   `tglPemesanan` date NOT NULL,
   `typeObat` varchar(255) NOT NULL,
   `namaPasien` varchar(255) NOT NULL,
   `namaObat` varchar(255) NOT NULL,
-  `hargaObat` int(11) NOT NULL,
+  `hargaObat` int(100) NOT NULL,
   `keluhan` varchar(255) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `status` varchar(20) NOT NULL,
+  `id_user` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_pemesanan`
+-- Dumping data untuk tabel `tbl_pemesanan_obat`
 --
 
-INSERT INTO `tbl_pemesanan` (`id`, `tglPemesanan`, `typeObat`, `namaPasien`, `namaObat`, `hargaObat`, `keluhan`, `status`) VALUES
-(5, '2023-01-17', 'kapsul', 'prasetyono', 'Inzana', 5000, 'qweasdawdasawsd', 'Diajukan'),
-(7, '2023-01-17', 'Vitamin', 'prasetyono', 'VItacimin', 1500, 'adas', 'Diajukan'),
-(8, '2023-01-17', 'Sakit Kepala', 'Prasetyono Putra', 'Oskadon', 3000, 'asd', 'Diajukan'),
-(9, '2023-01-17', 'Batuk & Flu', 'Prasetyono Putra', 'Inzana', 5000, 'dasdasdas', 'Diajukan');
+INSERT INTO `tbl_pemesanan_obat` (`id`, `tglPemesanan`, `typeObat`, `namaPasien`, `namaObat`, `hargaObat`, `keluhan`, `status`, `id_user`) VALUES
+(5, '2023-01-17', 'kapsul', 'prasetyono', 'Inzana', 5000, 'qweasdawdasawsd', 'Diajukan', 0),
+(7, '2023-01-17', 'Vitamin', 'prasetyono', 'VItacimin', 1500, 'adas', 'Diajukan', 0),
+(8, '2023-01-17', 'Sakit Kepala', 'Prasetyono Putra', 'Oskadon', 3000, 'asd', 'Diajukan', 0),
+(9, '2023-01-17', 'Batuk & Flu', 'Prasetyono Putra', 'Inzana', 5000, 'dasdasdas', 'Diajukan', 0),
+(10, '2023-01-18', 'Sakit Kepala', 'Prasetyono Putra', 'Oskadon', 3000, 'poqwdksadkasl', 'Diajukan', 0),
+(11, '2023-01-18', 'Sakit Kepala', 'Prasetyono Putra', 'Oskadon', 3000, 'dnfjabfahjsbajshfb', 'Diajukan', 0),
+(12, '2023-01-18', 'Sakit Kepala', 'Prasetyono Putra', 'Oskadon', 3000, 'kjansfjhabfasd', 'Diajukan', 0),
+(13, '2023-01-18', 'Sakit Kepala', 'Prasetyono Putra', 'Oskadon', 3000, 'isanjhasdbajsh', 'Diajukan', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_pemesanan_poli`
+--
+
+CREATE TABLE `tbl_pemesanan_poli` (
+  `id_poli` int(11) NOT NULL,
+  `tglPemesanan` date NOT NULL,
+  `typePoli` varchar(255) NOT NULL,
+  `namaPasien` varchar(255) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `id_user` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tbl_pemesanan_poli`
+--
+
+INSERT INTO `tbl_pemesanan_poli` (`id_poli`, `tglPemesanan`, `typePoli`, `namaPasien`, `status`, `id_user`) VALUES
+(1, '2023-01-18', 'Poli Gigi', 'Prasetyono Putra', 'Diajukan', 9),
+(2, '2023-01-18', 'Poli Gigi', 'Prasetyono Putra', 'Diajukan', 9),
+(3, '2023-01-18', 'Poli Gigi', 'Prasetyono Putra', 'Diajukan', 9),
+(4, '2023-01-18', 'Poli Gigi', 'Prasetyono Putra', 'Diajukan', 9),
+(5, '2023-01-18', 'Poli Gigi', 'Prasetyono Putra', 'Diajukan', 9),
+(6, '2023-01-18', 'Poli Gigi', 'Prasetyono Putra', 'Diajukan', 9);
 
 -- --------------------------------------------------------
 
@@ -178,10 +210,16 @@ ALTER TABLE `tbl_obat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tbl_pemesanan`
+-- Indeks untuk tabel `tbl_pemesanan_obat`
 --
-ALTER TABLE `tbl_pemesanan`
+ALTER TABLE `tbl_pemesanan_obat`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tbl_pemesanan_poli`
+--
+ALTER TABLE `tbl_pemesanan_poli`
+  ADD PRIMARY KEY (`id_poli`);
 
 --
 -- Indeks untuk tabel `tbl_user`
@@ -218,10 +256,16 @@ ALTER TABLE `tbl_obat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_pemesanan`
+-- AUTO_INCREMENT untuk tabel `tbl_pemesanan_obat`
 --
-ALTER TABLE `tbl_pemesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `tbl_pemesanan_obat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_pemesanan_poli`
+--
+ALTER TABLE `tbl_pemesanan_poli`
+  MODIFY `id_poli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`
