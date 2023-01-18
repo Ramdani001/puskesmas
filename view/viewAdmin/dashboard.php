@@ -20,19 +20,19 @@
     <div class="btnAction w-100" style="margin-top: 10%;">
         <div id="box" class="w-100 text-center d-flex justify-content-center">
             <a href="<?= $main_url?>admin/dataPasien" class="itemAction p-3 mx-5 m-2 text-decoration-none">
-                <h4>Kelola Data Pasien</h4>
+                <h4>Data Pasien</h4>
                 <img src="<?= $main_url?>assets/img/admin/icon/dataPasien.png" alt="" width="150">
             </a>
             <a href="<?= $main_url?>admin/dataObat" class="itemAction p-3 mx-5 m-2 text-decoration-none">
-                <h4>Kelola Data Obat</h4>
+                <h4>Data Obat</h4>
                 <img src="<?= $main_url?>assets/img/admin/icon/dataObat.png" alt="" width="150">
             </a>
-            <a href="<?= $main_url?>admin/dataDokter" class="itemAction p-3 mx-5 m-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalHistory">
-                <h4>Kelola Data Poli & Dokter</h4>
+            <a href="<?= $main_url?>admin/dataDokter" class="itemAction p-3 mx-5 m-2 text-decoration-none">
+                <h4>Data Pemesanan</h4>
                 <img src="<?= $main_url?>assets/img/admin/icon/dataDoktor.png" alt="" width="150">
             </a>
-            <a href="<?= $main_url?>admin/dataPemesanan" class="itemAction p-3 mx-5 m-2 text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalHistory">
-                <h4>Kelola Data Pemesanan</h4>
+            <a href="<?= $main_url?>admin/dataPemesanan" class="itemAction p-3 mx-5 m-2 text-decoration-none">
+                <h4>Data Pemesanan</h4>
                 <img src="<?= $main_url?>assets/img/admin/icon/dataPemesanan.png" alt="" width="150">
             </a>
         </div>

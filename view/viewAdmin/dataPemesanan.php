@@ -26,7 +26,7 @@
                 <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration">
                     <i class="fa-solid fa-arrow-rotate-left" style=""></i>
                 </a>
-                <h1 class="text-center">Data Obat</h1>
+                <h1 class="text-center">Data Pemesanan</h1>
             </div>
             <div class="p-5 ">
                 <button class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tambahObat">Tambah</button>
@@ -68,7 +68,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="tambahObatLabel">Tambah Obat</h1>
+            <h1 class="modal-title fs-5" id="tambahObatLabel">Tambah Pemesanan</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -100,7 +100,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="editObatLabel">Edit Obat</h1>
+            <h1 class="modal-title fs-5" id="editObatLabel">Edit Data Pemesanan</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
