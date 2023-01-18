@@ -33,10 +33,10 @@
                 <table class="table table-striped table-hover text-center w-100">
                 <tr>
                     <th>No</th>
-                    <th>Type Obat</th>
-                    <th>Nama Obat</th>
-                    <th>Harga Obat</th>
-                    <th>Aksi</th>
+                    <th>Nama Poli</th>
+                    <th>Nama Dokter</th>
+                    <th>Spesialis</th>
+                    <th>Gambar</th>
                 </tr>
                 <?php $i = 1 ?>
                 <?php foreach($dataObat as $obat): ?>
