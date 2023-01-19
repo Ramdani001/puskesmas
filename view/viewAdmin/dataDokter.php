@@ -49,7 +49,7 @@
 
     <?php include('view/layout/navbarAdmin.php'); ?>  
 
-    <div class="pb-2" style="background-color: #788F76; height: 100%; width: 100%;">
+    <div class="pb-2" style="">
         <div class="p-5">
         <div class="card m-5 h-100">
             <div>

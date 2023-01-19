@@ -40,4 +40,4 @@
             <img src="<?= $main_url?>assets/img/login/icon/logout.png" width="40" alt="">
         </a>
      </div>
-</nav>
+</nav> 
