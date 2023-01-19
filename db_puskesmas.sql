@@ -124,11 +124,11 @@ INSERT INTO `tbl_pemesanan_obat` (`id`, `tglPemesanan`, `typeObat`, `namaPasien`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pemesanan_poli`
+-- Struktur dari tabel `tbl_checkup_pasien`
 --
 
-CREATE TABLE `tbl_pemesanan_poli` (
-  `id_poli` int(11) NOT NULL,
+CREATE TABLE `tbl_checkup_pasien` (
+  `id_checkup` int(11) NOT NULL,
   `tglPemesanan` date NOT NULL,
   `typePoli` varchar(255) NOT NULL,
   `namaPasien` varchar(255) NOT NULL,
@@ -137,10 +137,10 @@ CREATE TABLE `tbl_pemesanan_poli` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_pemesanan_poli`
+-- Dumping data untuk tabel `tbl_checkup_pasien`
 --
 
-INSERT INTO `tbl_pemesanan_poli` (`id_poli`, `tglPemesanan`, `typePoli`, `namaPasien`, `status`, `id_user`) VALUES
+INSERT INTO `tbl_checkup_pasien` (`id_checkup`, `tglPemesanan`, `typePoli`, `namaPasien`, `status`, `id_user`) VALUES
 (1, '2023-01-18', 'Poli Gigi', 'Prasetyono Putra', 'Diajukan', 9),
 (2, '2023-01-18', 'Poli Gigi', 'Prasetyono Putra', 'Diajukan', 9),
 (3, '2023-01-18', 'Poli Gigi', 'Prasetyono Putra', 'Diajukan', 9),
@@ -216,10 +216,10 @@ ALTER TABLE `tbl_pemesanan_obat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tbl_pemesanan_poli`
+-- Indeks untuk tabel `tbl_checkup_pasien`
 --
-ALTER TABLE `tbl_pemesanan_poli`
-  ADD PRIMARY KEY (`id_poli`);
+ALTER TABLE `tbl_checkup_pasien`
+  ADD PRIMARY KEY (`id_checkup`);
 
 --
 -- Indeks untuk tabel `tbl_user`
@@ -262,10 +262,10 @@ ALTER TABLE `tbl_pemesanan_obat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_pemesanan_poli`
+-- AUTO_INCREMENT untuk tabel `tbl_checkup_pasien`
 --
-ALTER TABLE `tbl_pemesanan_poli`
-  MODIFY `id_poli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `tbl_checkup_pasien`
+  MODIFY `id_checkup` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`

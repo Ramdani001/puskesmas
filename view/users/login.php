@@ -1,4 +1,7 @@
-<?php include('controller/LoginUserController.php'); ?>
+<?php 
+    include('functions.php');
+    include('controller/LoginController.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">

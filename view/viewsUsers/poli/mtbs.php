@@ -1,6 +1,6 @@
 <?php
     include('controller/BerandaController.php');
-    include('controller/PemesananPoliController.php');
+    include('controller/DataPasienController.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,7 @@
                     <div class="mb-3 pb-3">
                         <div class="mb-3">
                             <input type="text" class="form-control" placeholder="Nama Lengkap Pasien" class="" name="namePasien">
-                            <input type="hidden" name="typePoli" value="Poli MTBS">
+                            <input type="hidden" name="typePoli" value="MTBS">
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" placeholder="Masukan NIK" id="floatingTextarea" name="nik"></input>
@@ -42,7 +42,7 @@
                             <input type="date" class="form-control" class="" name="tglLahir">
                         </div>
                         <div class="mb-3 pt-3">
-                            <button class="btn btn-success ps-5 pe-5" type="submit" name="submitPoli">Daftar</button>
+                            <button class="btn btn-success ps-5 pe-5" type="submit" name="checkupPasien">Daftar</button>
                         </div>
                     </div>
                     </form>

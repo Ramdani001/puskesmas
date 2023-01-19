@@ -1,6 +1,4 @@
 <?php
-    include_once('functions.php');
-
     $email = $_SESSION["email"];
     $dataAkun = query("SELECT * FROM tbl_user WHERE email = '$email'")[0];
 ?>

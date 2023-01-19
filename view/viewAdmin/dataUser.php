@@ -1,6 +1,5 @@
 <?php
-    include('controller/dataUserController.php');
-
+    include('controller/DataUserController.php');
 
     $jumlahDataPerHalaman = 5;
     $jumlahData = count(query("SELECT * FROM tbl_user"));
@@ -83,10 +82,16 @@
                             </td>
                             <td class="">
                                 <form action="#" method="post">
-                                    <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editUser" name="">
+                                    <input type="hidden" id="id_userX" name="id_user" value="<?= $user["id_user"]; ?>">
+                                    <input type="hidden" id="<?= $user["id_user"]; ?>_nama_lengkap" value='<?= $user["nama_lengkap"]; ?>'>
+                                    <input type="hidden" id="<?= $user["id_user"]; ?>_email" value='<?= $user["email"]; ?>'>
+                                    <input type="hidden" id="<?= $user["id_user"]; ?>_password" value='<?= $user["password"]; ?>'>
+                                    <input type="hidden" id="<?= $user["id_user"]; ?>_no_telepon" value='<?= $user["no_telepon"]; ?>'>
+                                    <input type="hidden" id="<?= $user["id_user"]; ?>_src_gambar" value='<?= $user["src_gambar"]; ?>'>
+                                    <button type="button" onclick='setDetailUser(<?= $user["id_user"]; ?>)' class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editUser" name="">
                                         <i class="fa-solid fa-pen" style="color: green;"></i>
                                     </button>
-                                    <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
+                                    <button type="submit" name="hapusDataUser" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
                                         <i class="fa-solid fa-trash" style="color: red;"></i>
                                     </button>
                                 </form>
@@ -147,15 +152,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                     <div class="modal-body">
-                        <form id="formtambahUser" action="" method="post">
+                        <form id="formtambahUser" action="" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="namaLengkap" placeholder="Nama Lengkap" name="namaLengkap">
+                                <input type="text" class="form-control" id="namaLengkap" placeholder="Nama Lengkap" name="nama">
                             </div>
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="email" placeholder="Alamat Email" name="email">
                             </div>
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="password" placeholder="password" name="password">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="password" placeholder="Konfirmasi Password" name="passwordConf">
                             </div>
                             <div class="mb-3">
                                 <input type="text" class="form-control" id="telp" placeholder="No Telepon" name="telp">
@@ -174,7 +182,7 @@
          </div>
     </div>
 
-    <!-- Edit Tambah -->
+    <!-- Edit -->
     <div class="modal fade" id="editUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editUserLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -183,27 +191,28 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                     <div class="modal-body">
-                        <form id="formeditUser" action="" method="post">
+                        <form id="formeditUser" action="" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="namaLengkap" placeholder="Nama Lengkap" name="namaLengkap">
+                                <input type="hidden" name="id_user" id="id_user_edit">
+                                <input type="text" class="form-control" id="nama_lengkap" placeholder="Nama Lengkap" name="namaLengkap">
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="email" placeholder="Alamat Email" name="email">
+                                <input type="text" class="form-control" id="emailX" placeholder="Alamat Email" name="email" readonly>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="password" placeholder="password" name="password">
+                                <input type="password" class="form-control" id="passwordX" placeholder="password" name="password" required>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="telp" placeholder="No Telepon" name="telp">
+                                <input type="text" class="form-control" id="no_telepon" placeholder="No Telepon" name="telp">
                             </div>
                             <div class="mb-3">
                                 <label for="gambar">Foto Profile</label>
-                                <input type="file" class="form-control" id="gambar" name="gambar">
+                                <input type="file" class="form-control" id="src_gambar" name="gambar">
                             </div>
                         </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" name="tambahUser" class="btn btn-primary">Simpan</button>
+                                <button type="submit" name="editDataUser" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -213,6 +222,16 @@
 
     <!-- Script -->
     <?php include('view/layout/footer.php'); ?>
+
+    <script>
+        function setDetailUser(data){
+            document.getElementById("id_user_edit").value = data;
+            document.getElementById("nama_lengkap").value = document.getElementById(data + "_nama_lengkap").value;
+            document.getElementById("emailX").value = document.getElementById(data + "_email").value;
+            // document.getElementById("passwordX").value = document.getElementById(data + "_password").value;
+            document.getElementById("no_telepon").value = document.getElementById(data + "_no_telepon").value;
+        }
+    </script>
 
 </body>
 </html>
