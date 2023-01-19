@@ -1,32 +1,6 @@
 <?php
+    include('controller/BerandaAdminController.php');
     include('controller/PemesananObatController.php');
-
-    $jumlahDataPerHalaman = 5;
-    $jumlahData = count(query("SELECT * FROM tbl_pemesanan_obat"));
-    $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-    $halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
-    $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-
-    $tbl_pemesanan_obat = query("SELECT * FROM tbl_pemesanan_obat LIMIT $awalData, $jumlahDataPerHalaman");
-
-    if (isset($_POST["halaman"])) {
-        $jumlahDataPerHalaman = 5;
-        $jumlahData = count(query("SELECT * FROM tbl_pemesanan_obat"));
-        $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-        $x = 1;
-
-        if (isset($_POST["next"])) {
-            $x = $_POST["next"];
-        }else if (isset($_POST["prev"])) {
-            $x = $_POST["prev"];
-        }
-
-        $halamanAktif = ( isset($x) ) ? $x : 1;
-        $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-
-        $tbl_obat = query("SELECT * FROM tbl_pemesanan_pbat LIMIT $awalData, $jumlahDataPerHalaman");
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +44,7 @@
                     <th>Status</th>
                     <th>Aksi</th>
                 </tr>
-                <?php $i = 1 ?>
+                <?php $i = $awalData + 1 ?>
                 <?php foreach($tbl_pemesanan_obat as $pesan): ?>
                     <tr>
                         <td><?= $i; ?></td>
@@ -100,17 +74,25 @@
                             <?php }?>
                         </td>
                         <td class="">
-                            <!-- <form action="" method="post"> -->
-                                <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#changeStatus" name="">
+                            <form action="" method="post">
+                                <input type="hidden" name="id_pemesanan" value="<?= $pesan["id_pemesanan"]; ?>">
+                                <input type="hidden" id="<?= $pesan["id_pemesanan"]; ?>_tglPemesanan" value='<?= $pesan["tglPemesanan"]; ?>'>
+                                <input type="hidden" id="<?= $pesan["id_pemesanan"]; ?>_typeObat" value='<?= $pesan["typeObat"]; ?>'>
+                                <input type="hidden" id="<?= $pesan["id_pemesanan"]; ?>_namaPasien" value='<?= $pesan["namaPasien"]; ?>'>
+                                <input type="hidden" id="<?= $pesan["id_pemesanan"]; ?>_hargaObat" value='<?= $pesan["hargaObat"]; ?>'>
+                                <input type="hidden" id="<?= $pesan["id_pemesanan"]; ?>_keluhan" value='<?= $pesan["keluhan"]; ?>'>
+                                <input type="hidden" id="<?= $pesan["id_pemesanan"]; ?>_namaObat" value='<?= $pesan["namaObat"]; ?>'>
+                                <input type="hidden" id="<?= $pesan["id_pemesanan"]; ?>_status" value='<?= $pesan["status"]; ?>'>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#changeStatus" onClick="setDetailPemesananStatus('<?php echo $pesan["id_pemesanan"]; ?>');">
                                     Status
                                 </button>
-                                <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editPemesanan" name="">
+                                <button type="button" onClick="setDetailPemesanan('<?php echo $pesan["id_pemesanan"]; ?>');" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editPemesanan" name="">
                                     <i class="fa-solid fa-pen" style="color: green;"></i>
                                 </button>
-                                <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
+                                <button type="submit" name="hapusDataPemesanan" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
                                     <i class="fa-solid fa-trash" style="color: red;"></i>
                                 </button>
-                            <!-- </form> -->
+                            </form>
                         </td>
                     </tr>
                     <?php $i++ ?>
@@ -187,6 +169,9 @@
                     <input type="text" class="form-control" id="namaPasien" placeholder="Nama Pasien" name="namaPasien">
                 </div>
                 <div class="mb-3">
+                    <input type="text" class="form-control" id="namaObat" placeholder="Nama Obat" name="namaObat">
+                </div>
+                <div class="mb-3">
                     <input type="text" class="form-control" id="Harga Obat" placeholder="Harga Obat" name="hargaObat">
                 </div>
                 <div class="form-floating mb-3">
@@ -196,7 +181,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" name="tambahObat" class="btn btn-primary">Simpan</button>
+                <button type="submit" name="tambahPesanObat" class="btn btn-primary">Simpan</button>
             </div>
         </div>
         </form>
@@ -214,10 +199,11 @@
         <div class="modal-body">
                 <form id="formeditPemesanan" action="" method="post">
                 <div class="mb-3">
-                    <input type="date" class="form-control" id="tglPemesanan" placeholder="Tanggal Pemesanan" name="tglPemesanan">
+                    <input type="hidden" name="id_pemesanan" id="id_pemesanan_edit">
+                    <input type="date" class="form-control" id="tglPemesananX" placeholder="Tanggal Pemesanan" name="tglPemesanan">
                 </div>
                 <div class="mb-3">
-                <select name="typeObat" id="typeObat" class="form-select" aria-label="Default select example">
+                <select name="typeObat" id="typeObatX" class="form-select" aria-label="Default select example">
                         <option selected>-- Pilih Type Obat --</option>
                         <option value="Sakit Kepala">Sakit Kepala</option>
                         <option value="Batuk & Flu">Batuk & Flu</option>
@@ -228,19 +214,19 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="namaPasien" placeholder="Nama Pasien" name="namaPasien">
+                    <input type="text" class="form-control" id="namaPasienX" placeholder="Nama Pasien" name="namaPasien">
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="Harga Obat" placeholder="Harga Obat" name="hargaObat">
+                    <input type="text" class="form-control" id="hargaObat" placeholder="Harga Obat" name="hargaObat">
                 </div>
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Masukan Keluhan Anda" id="keluhan" name="keluhan"></textarea>
+                    <textarea class="form-control" placeholder="Masukan Keluhan Anda" id="keluhanX" name="keluhan"></textarea>
                     <label for="keluhan">Keluhan</label>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" name="tambahObat" class="btn btn-primary">Simpan</button>
+                <button type="submit" name="editPemesananObat" class="btn btn-primary">Simpan</button>
             </div>
         </div>
         </form>
@@ -260,24 +246,25 @@
             <form id="formchangeStatus" action="" method="post">
                 <div class="mb-3">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="namaPasien" placeholder="Nama Pasien" name="namaPasien" value="" >
+                        <input type="hidden" name="id_pemesanan_status" id="id_pemesanan_status">
+                        <input type="text" class="form-control" id="namaPasienStatus" placeholder="Nama Pasien" name="namaPasien" value="" >
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="namaObat" placeholder="Nama Obat" name="namaObat" value="" readonly>
+                        <input type="text" class="form-control" id="namaObatStatus" placeholder="Nama Obat" name="namaObat" value="" readonly>
                     </div>  
                     <div class="mb-3">
-                        <select name="namaPoli" id="namaPoli" class="form-select" aria-label="Default select example">
+                        <select name="status" id="status" class="form-select" aria-label="Default select example">
                             <option selected>-- Status --</option>
-                            <option value="Poli Gigi">Diajukan</option>
-                            <option value="BP Umum">Diproses</option>
-                            <option value="BP Umum">Disetujui</option>
-                            <option value="BP Umum">Ditolak</option>
+                            <option value="Diajukan">Diajukan</option>
+                            <option value="Diproses">Diproses</option>
+                            <option value="Disetujui">Disetujui</option>
+                            <option value="Ditolak">Ditolak</option>
                         </select>
                     </div>    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" name="tambahObat" class="btn btn-primary">Simpan</button>
+                    <button type="submit" name="setStatusPemesanan" class="btn btn-primary">Simpan</button>
                 </div>
                 </div>
             </form>
@@ -286,6 +273,24 @@
 
     <!-- Script -->
     <?php include('view/layout/footer.php'); ?>
+
+    <script>
+        function setDetailPemesanan(data){
+            document.getElementById("id_pemesanan_edit").value = data;
+            document.getElementById("tglPemesananX").value = document.getElementById(data + "_tglPemesanan").value;
+            document.getElementById("typeObatX").value = document.getElementById(data + "_typeObat").value;
+            document.getElementById("namaPasienX").value = document.getElementById(data + "_namaPasien").value;
+            document.getElementById("hargaObat").value = document.getElementById(data + "_hargaObat").value;
+            document.getElementById("keluhanX").value = document.getElementById(data + "_keluhan").value;
+        }
+
+        function setDetailPemesananStatus(data){
+            document.getElementById("id_pemesanan_status").value = data;
+            document.getElementById("namaObatStatus").value = document.getElementById(data + "_namaObat").value;
+            document.getElementById("namaPasienStatus").value = document.getElementById(data + "_namaPasien").value;
+            document.getElementById("status").value = document.getElementById(data + "_status").value;
+        }
+    </script>
 
 </body>
 </html>

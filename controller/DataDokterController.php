@@ -1,18 +1,16 @@
 <?php
-    $dataObat = query("SELECT * FROM tbl_obat");
-
     // Proses paginate table
     $jumlahDataPerHalaman = 5;
-    $jumlahData = count(query("SELECT * FROM tbl_obat"));
+    $jumlahData = count(query("SELECT * FROM tbl_dokter"));
     $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
     $halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
     $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
-    $tbl_obat = query("SELECT * FROM tbl_obat LIMIT $awalData, $jumlahDataPerHalaman");
+    $tbl_dokter = query("SELECT * FROM tbl_dokter LIMIT $awalData, $jumlahDataPerHalaman");
 
     if (isset($_POST["halaman"])) {
         $jumlahDataPerHalaman = 5;
-        $jumlahData = count(query("SELECT * FROM tbl_obat"));
+        $jumlahData = count(query("SELECT * FROM tbl_dokter"));
         $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
         $x = 1;
 
@@ -25,82 +23,84 @@
         $halamanAktif = ( isset($x) ) ? $x : 1;
         $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
-        $tbl_obat = query("SELECT * FROM tbl_obat LIMIT $awalData, $jumlahDataPerHalaman");
+        $tbl_dokter = query("SELECT * FROM tbl_dokter LIMIT $awalData, $jumlahDataPerHalaman");
     }
 
-    // Proses tambah obat ke database
-    if( isset($_POST["tambahObat"]) ) {
-        
-        $typeObat = $_POST["typeObat"];
-        $namaObat = $_POST["namaObat"];
-        $hargaObat = $_POST["hargaObat"];
-        $expire =$_POST["expire"];
+    // Proses tambah data dokter ke database
+    if( isset($_POST["tambahDataDokter"]) ) {
+        $namaPoli = $_POST["namaPoli"];
+        $namaDokter = $_POST["namaDokter"];
+        $spesialis = $_POST["spesialis"];
+        $tglMasuk = $_POST["tglMasuk"];
+        // $gambar =$_POST["gambar"];
 
-        $query = "INSERT INTO tbl_obat VALUES ('', '$namaObat', '$hargaObat', '$expire', '$typeObat')";
+        $query = "INSERT INTO tbl_dokter VALUES ('', '$namaPoli', '$namaDokter', '$spesialis', '$tglMasuk', 'null')";
         mysqli_query($conn, $query);
 
         if (mysqli_affected_rows($conn) > 0) {
             echo "
             <script>
                 alert('Berhasil ditambahkan!');
-                window.location.href='dataObat';
+                window.location.href='dataDokter';
             </script>
             ";
         } else {
             echo "
             <script>
                 alert('Gagal ditambahkan!');
-                window.location.href='dataObat';
+                window.location.href='dataDokter';
             </script>
             ";
         }
     }
 
-    // Proses hapus obat di database
-    if( isset($_POST["hapusObat"]) ) {
-        $id = $_POST["id_obat"];
-        mysqli_query($conn, "DELETE FROM tbl_obat WHERE id_obat = '$id'");
+    // Proses hapus data dokter di database
+    if( isset($_POST["hapusDataDokter"]) ) {
+        $id = $_POST["id_dokter"];
+        mysqli_query($conn, "DELETE FROM tbl_dokter WHERE id_dokter = '$id'");
 
         if (mysqli_affected_rows($conn) > 0) {
             echo "
                 <script>
                     alert('Data berhasil dihapus!');
-                    window.location.href='dataObat';
+                    window.location.href='dataDokter';
                 </script>
             ";
         } else {
             echo "
                 <script>
                     alert('Data gagal dihapus!');
-                    window.location.href='dataObat';
+                    window.location.href='dataDokter';
                 </script>
             ";
         }
     }
 
     // Proses edit data obat
-    if( isset($_POST["editDataObat"]) ) {
-        $id_obat = $_POST["id_obat"];
-        $namaObat = $_POST["namaObat"];
-        $hargaObat = $_POST["hargaObat"];
-        $expire = $_POST["expire"];
+    if( isset($_POST["editDataDokter"]) ) {
+        $id_dokter = $_POST["id_dokter"];
+        $namaDokter = $_POST["namaDokter"];
+        $spesialis = $_POST["spesialis"];
+        $tglMasuk = $_POST["tglMasuk"];
+        $namaPoli = $_POST["namaPoli"];
 
-        mysqli_query($conn, "UPDATE tbl_obat SET namaObat = '$namaObat', hargaObat = '$hargaObat', expire ='$expire' WHERE id_obat = '$id_obat'");
+        mysqli_query($conn, "UPDATE tbl_dokter SET namaPoli = '$namaPoli', namaDokter = '$namaDokter', spesialis ='$spesialis', tglMasuk ='$tglMasuk' WHERE id_dokter = '$id_dokter'");
 
         if (mysqli_affected_rows($conn) > 0) {
             echo "
                 <script>
                     alert('Data berhasil diedit!');
-                    window.location.href='dataObat';
+                    window.location.href='dataDokter';
                 </script>
             ";
         } else {
             echo "
                 <script>
                     alert('Data gagal diedit!');
-                    window.location.href='dataObat';
+                    window.location.href='dataDokter';
                 </script>
             ";
         }
     }
+
 ?>

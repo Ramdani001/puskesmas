@@ -1,6 +1,6 @@
 <?php
     include('controller/BerandaController.php');
-    include('controller/PemesananPoliController.php');
+    include('controller/DataPasienController.php');
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
                             <input type="date" class="form-control" class="" name="tglLahir">
                         </div>
                         <div class="mb-3 pt-3">
-                            <button class="btn btn-success ps-5 pe-5" type="submit" name="submitPoli">Daftar</button>
+                            <button class="btn btn-success ps-5 pe-5" type="submit" name="checkupPasien">Daftar</button>
                         </div>
                     </div>
                     </form>

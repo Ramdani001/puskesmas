@@ -1,7 +1,5 @@
 <?php 
     include('controller/BerandaController.php'); 
-    include('controller/PemesananObatController.php'); 
-
 ?>
 
 <!DOCTYPE html>
@@ -59,12 +57,12 @@
                 <div class="d-flex w-100 mx-auto text-justify">
                     
                 <?php foreach($dataPemesanan as $pesanan): ?>
-                    <?php if ($pesanan["typePendaftaran"]) { ?>
+                    <?php if ($pesanan["typePoli"]) { ?>
                         <div class="card me-3 w-75 mx-auto">
                             <div class="card-body m-3">
                                 <table cellspacing="2">
                                     <tr class="mb-3">
-                                        <td class="pe-5">Tangal Pendaftaran</td>
+                                        <td class="pe-5">Tanggal Pendaftaran</td>
                                         <td class="ps-5">: <?= $pesanan["tglPemesanan"]; ?></td>
                                     </tr>
                                     <tr class="pb-3">
@@ -97,7 +95,7 @@
                         <div class="card-body m-3">
                             <table cellspacing="2">
                                 <tr class="mb-3">
-                                    <td class="pe-5">Tangal Pemesanan</td>
+                                    <td class="pe-5">Tanggal Pemesanan</td>
                                     <td class="ps-5">: <?= $pesanan["tglPemesanan"]; ?></td>
                                 </tr>
                                 <tr class="pb-3">

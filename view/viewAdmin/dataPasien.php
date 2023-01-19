@@ -1,34 +1,6 @@
 <?php
-    include('controller/PemesananPoliController.php');
-
-    $checkUp = query("SELECT * FROM tbl_pemesanan_poli");
-
-    $jumlahDataPerHalaman = 5;
-    $jumlahData = count(query("SELECT * FROM tbl_pemesanan_poli"));
-    $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-    $halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
-    $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-
-    $tbl_pemesanan_poli = query("SELECT * FROM tbl_pemesanan_poli LIMIT $awalData, $jumlahDataPerHalaman");
-
-    if (isset($_POST["halaman"])) {
-        $jumlahDataPerHalaman = 5;
-        $jumlahData = count(query("SELECT * FROM tbl_pemesanan_poli"));
-        $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-        $x = 1;
-
-        if (isset($_POST["next"])) {
-            $x = $_POST["next"];
-        }else if (isset($_POST["prev"])) {
-            $x = $_POST["prev"];
-        }
-
-        $halamanAktif = ( isset($x) ) ? $x : 1;
-        $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-
-        $tbl_pemesanan_poli = query("SELECT * FROM tbl_pemesanan_poli LIMIT $awalData, $jumlahDataPerHalaman");
-    }
-
+    include('controller/BerandaAdminController.php');
+    include('controller/DataPasienController.php');
 ?>
 
 <!DOCTYPE html>
@@ -103,49 +75,53 @@
                         <th>Aksi</th>
                     </tr>
 
-                    <?php $i = $awalData + 1?>
-                    <?php foreach($tbl_pemesanan_poli as $pemesanan): ?>
-                        <tr>
-                            <td><?= $i; ?></td> 
-                            <td><?= $pemesanan["tglPemesanan"]; ?></td>
-                            <td><?= $pemesanan["typePoli"]; ?></td>
-                            <td><?= $pemesanan["namaPasien"]; ?></td>
-                            <td>
-                                <?php if($pemesanan["status"] == "Diajukan") {?>
-                                    <button class="btn btn-secondary">
-                                        <?= $pemesanan["status"]; ?>
-                                    </button>
-                                <?php } else if ($pemesanan["status"] == "Diproses"){?>
-                                    <button class="btn btn-primary">
-                                        <?= $pemesanan["status"]; ?>
-                                    </button>
-                                <?php } else if ($pemesanan["status"] == "Disetujui"){?>
-                                    <button class="btn btn-success">
-                                        <?= $pemesanan["status"]; ?>
-                                    </button>
-                                <?php } else {?>
-                                    <button class="btn btn-danger">
-                                        <?= $pemesanan["status"]; ?>
-                                    </button>
-                                <?php }?>
-                            </td>
-                            <td class="">
-                                <form action="#" method="post">
-                                    <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#changeStatus" name="">
-                                        Status
-                                    </button>
-                                    <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editData" name="">
-                                        <i class="fa-solid fa-pen" style="color: green;"></i>
-                                    </button>
-                                    <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
-                                        <i class="fa-solid fa-trash" style="color: red;"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        <?php $i++ ?>
-                    <?php endforeach; ?>
-                    </table>
+                <?php $i = $awalData + 1?>
+                <?php foreach($dataPasien as $pasien): ?>
+                    <tr>
+                        <td><?= $i; ?></td> 
+                        <td><?= $pasien["tglPendaftaran"]; ?></td>
+                        <td><?= $pasien["typePoli"]; ?></td>
+                        <td><?= $pasien["namaPasien"]; ?></td>
+                        <td>
+                            <?php if($pasien["status"] == "Diajukan") {?>
+                                <button class="btn btn-secondary">
+                                    <?= $pasien["status"]; ?>
+                                </button>
+                            <?php } else if ($pasien["status"] == "Diproses"){?>
+                                <button class="btn btn-primary">
+                                    <?= $pasien["status"]; ?>
+                                </button>
+                            <?php } else if ($pasien["status"] == "Disetujui"){?>
+                                <button class="btn btn-success">
+                                    <?= $pasien["status"]; ?>
+                                </button>
+                            <?php } else {?>
+                                <button class="btn btn-danger">
+                                    <?= $pasien["status"]; ?>
+                                </button>
+                            <?php }?>
+                        </td>
+                        <td class="">
+                            <form action="#" method="post">
+                                <input type="hidden" name="id_checkup" id="id_checkup" value='<?= $pasien["id_checkup"]; ?>'>
+                                <input type="hidden" id="<?= $pasien["id_checkup"]; ?>_typePoli" value='<?= $pasien["typePoli"]; ?>'>
+                                <input type="hidden" id="<?= $pasien["id_checkup"]; ?>_namaPasien" value='<?= $pasien["namaPasien"]; ?>'>
+                                <input type="hidden" id="<?= $pasien["id_checkup"]; ?>_status" value='<?= $pasien["status"]; ?>'>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changeStatus" onclick='setDetailCheckupStatus(<?= $pasien["id_checkup"]; ?>)'>
+                                    Status
+                                </button>
+                                <button type="button" onclick='setDetailCheckup(<?= $pasien["id_checkup"]; ?>)' class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#changeStatus" name="">
+                                    <i class="fa-solid fa-pen" style="color: green;"></i>
+                                </button>
+                                <button type="submit" name="hapusPemesananCheckup" class="border-0 " style="background-color: transparent; font-size: 18px !important;">
+                                    <i class="fa-solid fa-trash" style="color: red;"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php $i++ ?>
+                <?php endforeach; ?>
+                </table>
 
                     <!-- navigasi -->
                     <div style=" display: flex; justify-content: center; width: 25%; float: right; background-color: white; text-align: center;">
@@ -188,6 +164,7 @@
             </div>
         </div>
     </div>
+    </div>
 
     <!-- Modal Change Status -->
     <div class="modal fade" id="changeStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changeStatusLabel" aria-hidden="true">
@@ -201,24 +178,26 @@
             <form id="formchangeStatus" action="" method="post">
                 <div class="mb-3">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="typePoli" placeholder="Type Poli" name="typePoli" value="<?= $checkUp["typePoli"]?>">
+                        <input type="text" class="form-control" id="type_poli" placeholder="Type Poli" name="typePoli" value="">
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="namaPasien" placeholder="Nama Pasien" name="namaPasien" value="<?= $checkUp["namaPasien"]?>">
+                        <input type="text" class="form-control" id="nama_pasien" placeholder="Nama Pasien" name="namaPasien" value="">
                     </div>    
                     <div class="mb-3">
-                        <select name="namaPoli" id="namaPoli" class="form-select" aria-label="Default select example">
+                        <input type="hidden" id="id_checkup_edit" name="id_checkup">
+                        <input type="hidden" id="status_pasienEX" name="status_pasienEX">
+                        <select name="statusPasien" id="status_pasien" class="form-select" aria-label="Default select example">
                             <option selected>-- Status --</option>
-                            <option value="Poli Gigi">Diajukan</option>
-                            <option value="BP Umum">Diproses</option>
-                            <option value="BP Umum">Disetujui</option>
-                            <option value="BP Umum">Ditolak</option>
+                            <option value="Diajukan">Diajukan</option>
+                            <option value="Diproses">Diproses</option>
+                            <option value="Disetujui">Disetujui</option>
+                            <option value="Ditolak">Ditolak</option>
                         </select>
                     </div>    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" name="tambahObat" class="btn btn-primary">Simpan</button>
+                    <button type="submit" name="editStatusPemesanan" class="btn btn-primary">Simpan</button>
                 </div>
                 </div>
             </form>
@@ -226,5 +205,29 @@
     </div>
     <!-- Script -->
     <?php include('view/layout/footer.php'); ?>
+
+    <script>
+        function setDetailCheckup(data) {
+            document.getElementById("id_checkup_edit").value = data;
+            document.getElementById("nama_pasien").value = document.getElementById(data + "_namaPasien").value;
+            document.getElementById("type_poli").value = document.getElementById(data + "_typePoli").value;
+            document.getElementById("status_pasienEX").value = document.getElementById(data + "_status").value;
+
+            document.getElementById("nama_pasien").readOnly = false;
+            document.getElementById("type_poli").readOnly = false;
+            document.getElementById("status_pasien").disabled = true;
+        }
+
+        function setDetailCheckupStatus(data) {
+            document.getElementById("id_checkup_edit").value = data;
+            document.getElementById("nama_pasien").value = document.getElementById(data + "_namaPasien").value;
+            document.getElementById("type_poli").value = document.getElementById(data + "_typePoli").value;
+            document.getElementById("status_pasien").value = document.getElementById(data + "_status").value;
+            
+            document.getElementById("nama_pasien").readOnly = true;
+            document.getElementById("type_poli").readOnly = true;
+            document.getElementById("status_pasien").disabled = false;
+        }
+    </script>
 </body>
 </html>

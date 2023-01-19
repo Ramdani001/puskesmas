@@ -1,32 +1,6 @@
 <?php
+    include('controller/BerandaAdminController.php');
     include('controller/DataObatController.php');
-
-    $jumlahDataPerHalaman = 5;
-    $jumlahData = count(query("SELECT * FROM tbl_obat"));
-    $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-    $halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
-    $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-
-    $tbl_obat = query("SELECT * FROM tbl_obat LIMIT $awalData, $jumlahDataPerHalaman");
-
-    if (isset($_POST["halaman"])) {
-        $jumlahDataPerHalaman = 5;
-        $jumlahData = count(query("SELECT * FROM tbl_obat"));
-        $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-        $x = 1;
-
-        if (isset($_POST["next"])) {
-            $x = $_POST["next"];
-        }else if (isset($_POST["prev"])) {
-            $x = $_POST["prev"];
-        }
-
-        $halamanAktif = ( isset($x) ) ? $x : 1;
-        $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-
-        $tbl_obat = query("SELECT * FROM tbl_obat LIMIT $awalData, $jumlahDataPerHalaman");
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -77,10 +51,15 @@
                             <td><?= $obat["expire"]; ?></td>
                             <td class="">
                                 <form action="" method="post">
-                                    <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editObat" name="">
+                                    <input type="hidden" id="id_obat" name="id_obat" value='<?= $obat["id_obat"]; ?>'>
+                                    <input type="hidden" id="<?= $obat["id_obat"]; ?>_typeObat" value='<?= $obat["typeObat"]; ?>'>
+                                    <input type="hidden" id="<?= $obat["id_obat"]; ?>_hargaObat" value='<?= $obat["hargaObat"]; ?>'>
+                                    <input type="hidden" id="<?= $obat["id_obat"]; ?>_namaObat" value='<?= $obat["namaObat"]; ?>'>
+                                    <input type="hidden" id="<?= $obat["id_obat"]; ?>_expire" value='<?= $obat["expire"]; ?>'>
+                                    <button type="button" onClick="setDetailObat('<?php echo $obat["id_obat"]; ?>');" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editObat" name="">
                                         <i class="fa-solid fa-pen" style="color: green;"></i>
                                     </button>
-                                    <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
+                                    <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="hapusObat">
                                         <i class="fa-solid fa-trash" style="color: red;"></i>
                                     </button>
                                 </form>
@@ -183,22 +162,23 @@
         <div class="modal-body">
             <form action="" method="post">
             <div class="mb-3">
-                <input type="text" class="form-control" id="typeObat" placeholder="Type Obat" name="typeObat">
+                <input type="hidden" id="id_obat_edit" name="id_obat">
+                <input type="text" class="form-control" id="type_obat" placeholder="Type Obat" name="typeObat">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="namaObat" placeholder="Nama Obat" name="namaObat">
+                <input type="text" class="form-control" id="nama_obat" placeholder="Nama Obat" name="namaObat">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="Harga Obat" placeholder="Harga Obat" name="Harga Obat">
+                <input type="text" class="form-control" id="harga_obat" placeholder="Harga Obat" name="hargaObat">
             </div>
             <div class="mb-3">
-                <input type="date" class="form-control" id="expire" placeholder="Harga Obat" name="Harga Obat">
+                <input type="date" class="form-control" id="expireX" name="expire">
             </div>
-            </form>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" name="editDataObat" class="btn btn-primary">Update</button>
+        </form>
         </div>
         </div>
     </div>
@@ -207,6 +187,16 @@
 
     <!-- Script -->
     <?php include('view/layout/footer.php'); ?>
+
+    <script>
+        function setDetailObat(data) {
+            document.getElementById("id_obat_edit").value = data;
+            document.getElementById("type_obat").value = document.getElementById(data + "_typeObat").value;
+            document.getElementById("nama_obat").value = document.getElementById(data + "_namaObat").value;
+            document.getElementById("harga_obat").value = document.getElementById(data + "_hargaObat").value;
+            document.getElementById("expireX").value = document.getElementById(data + "_expire").value;
+        }
+    </script>
 
 </body>
 </html>

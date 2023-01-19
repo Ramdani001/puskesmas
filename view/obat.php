@@ -76,7 +76,7 @@
                             <option selected>-- Silahkan Pilih Obat --</option>
                             <?php foreach($dataObat as $obat): ?>
                                 <?php if($obat["typeObat"] == "Sakit Kepala") : ?>
-                                    <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                                    <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>","id_obat":"<?= $obat["id_obat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </select>
@@ -93,7 +93,7 @@
                         <label for="floatingTextarea">Keluhan</label>
                     </div>
                     <div class="w-50 mx-auto">
-                        <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
+                        <button type="submit" class="btn btn-success w-100" name="pesanObat" style="border-radius: 40px !important;">Pesan</button>
                     </div>
                 </form>
             </div>
@@ -117,7 +117,7 @@
                             <option selected>-- Silahkan Pilih Obat --</option>
                             <?php foreach($dataObat as $obat): ?>
                                 <?php if($obat["typeObat"] == "Batuk & Flu") : ?>
-                                    <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                                    <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>","id_obat":"<?= $obat["id_obat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </select>
@@ -134,7 +134,7 @@
                     <label for="floatingTextarea">Keluhan</label>
                 </div>
                 <div class="w-50 mx-auto">
-                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
+                    <button type="submit" class="btn btn-success w-100" name="pesanObat" style="border-radius: 40px !important;">Pesan</button>
                 </div>
             </form>
         </div>
@@ -157,7 +157,7 @@
                         <option selected>-- Silahkan Pilih Obat --</option>
                         <?php foreach($dataObat as $obat): ?>
                             <?php if($obat["typeObat"] == "Vitamin") : ?>
-                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>","id_obat":"<?= $obat["id_obat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </select>
@@ -174,7 +174,7 @@
                     <label for="floatingTextarea">Keluhan</label>
                 </div>
                 <div class="w-50 mx-auto">
-                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
+                    <button type="submit" class="btn btn-success w-100" name="pesanObat" style="border-radius: 40px !important;">Pesan</button>
                 </div>
             </form>
         </div>
@@ -197,7 +197,7 @@
                         <option selected>-- Silahkan Pilih Obat --</option>
                         <?php foreach($dataObat as $obat): ?>
                             <?php if($obat["typeObat"] == "Pencernaan") : ?>
-                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>","id_obat":"<?= $obat["id_obat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </select>
@@ -214,7 +214,7 @@
                     <label for="floatingTextarea">Keluhan</label>
                 </div>
                 <div class="w-50 mx-auto">
-                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
+                    <button type="submit" class="btn btn-success w-100" name="pesanObat" style="border-radius: 40px !important;">Pesan</button>
                 </div>
             </form>
         </div>
@@ -237,7 +237,7 @@
                         <option selected>-- Silahkan Pilih Obat --</option>
                         <?php foreach($dataObat as $obat): ?>
                             <?php if($obat["typeObat"] == "Anti Nyeri") : ?>
-                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>","id_obat":"<?= $obat["id_obat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </select>
@@ -254,7 +254,7 @@
                     <label for="floatingTextarea">Keluhan</label>
                 </div>
                 <div class="w-50 mx-auto">
-                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
+                    <button type="submit" class="btn btn-success w-100" name="pesanObat" style="border-radius: 40px !important;">Pesan</button>
                 </div>
             </form>
         </div>
@@ -277,7 +277,7 @@
                         <option selected>-- Silahkan Pilih Obat --</option>
                         <?php foreach($dataObat as $obat): ?>
                             <?php if($obat["typeObat"] == "Anti Covid") : ?>
-                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
+                                <option value='{"nama":"<?= $obat["namaObat"]; ?>","harga":"<?= $obat["hargaObat"]; ?>","typeObat":"<?= $obat["typeObat"]; ?>","id_obat":"<?= $obat["id_obat"]; ?>"}'><?= $obat["namaObat"]; ?></option>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </select>
@@ -294,7 +294,7 @@
                     <label for="floatingTextarea">Keluhan</label>
                 </div>
                 <div class="w-50 mx-auto">
-                    <button type="submit" class="btn btn-success w-100" name="btnPesanObat" style="border-radius: 40px !important;">Pesan</button>
+                    <button type="submit" class="btn btn-success w-100" name="pesanObat" style="border-radius: 40px !important;">Pesan</button>
                 </div>
             </form>
         </div>

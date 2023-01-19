@@ -1,34 +1,6 @@
 <?php
-    include('controller/DataObatController.php');
-
-
-    $jumlahDataPerHalaman = 5;
-    $jumlahData = count(query("SELECT * FROM tbl_dokter"));
-    $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-    $halamanAktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] : 1;
-    $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-
-    $tbl_dokter = query("SELECT * FROM tbl_dokter LIMIT $awalData, $jumlahDataPerHalaman");
-
-    if (isset($_POST["halaman"])) {
-        $jumlahDataPerHalaman = 5;
-        $jumlahData = count(query("SELECT * FROM tbl_dokter"));
-        $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-        $x = 1;
-
-        if (isset($_POST["next"])) {
-            $x = $_POST["next"];
-        }else if (isset($_POST["prev"])) {
-            $x = $_POST["prev"];
-        }
-
-        $halamanAktif = ( isset($x) ) ? $x : 1;
-        $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
-
-        $tbl_dokter = query("SELECT * FROM tbl_dokter LIMIT $awalData, $jumlahDataPerHalaman");
-    }
-
-
+    include('controller/BerandaAdminController.php');
+    include('controller/DataDokterController.php');
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +41,7 @@
                     <th>Tanggal Masuk</th>
                     <th>Aksi</th>
                 </tr>
-                <?php $i = 1 ?>
+                <?php $i = $awalData + 1 ?>
                 <?php foreach($tbl_dokter as $dokter): ?>
                     <tr>
                         <td><?= $i; ?></td>
@@ -79,10 +51,15 @@
                         <td><?= $dokter["tglMasuk"]; ?></td>
                         <td class="">
                             <form action="#" method="post">
-                                <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editObat" name="">
+                                <input type="hidden" name="id_dokter" id="id_dokter" value='<?= $dokter["id_dokter"]; ?>'>
+                                <input type="hidden" id="<?= $dokter["id_dokter"]; ?>_namaPoli" value='<?= $dokter["namaPoli"]; ?>'>
+                                <input type="hidden" id="<?= $dokter["id_dokter"]; ?>_namaDokter" value='<?= $dokter["namaDokter"]; ?>'>
+                                <input type="hidden" id="<?= $dokter["id_dokter"]; ?>_spesialis" value='<?= $dokter["spesialis"]; ?>'>
+                                <input type="hidden" id="<?= $dokter["id_dokter"]; ?>_tglMasuk" value='<?= $dokter["tglMasuk"]; ?>'>
+                                <button type="button" onClick="setDetailDokter('<?php echo $dokter["id_dokter"]; ?>');" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editObat" name="">
                                     <i class="fa-solid fa-pen" style="color: green;"></i>
                                 </button>
-                                <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
+                                <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="hapusDataDokter">
                                     <i class="fa-solid fa-trash" style="color: red;"></i>
                                 </button>
                             </form>
@@ -163,12 +140,12 @@
             </div>
             <div class="mb-3">
                 <label for="" >Tanggal Masuk</label>
-                <input type="date" class="form-control" id="tglMasuk" placeholder="Kadaluarsa" name="tglMasuk">
+                <input type="date" class="form-control" id="tglMasuk" name="tglMasuk">
             </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" name="tambahObat" class="btn btn-primary">Simpan</button>
+            <button type="submit" name="tambahDataDokter" class="btn btn-primary">Simpan</button>
         </div>
     </div>
     </form>
@@ -186,23 +163,24 @@
         <div class="modal-body">
             <form action="" method="post">
             <div class="mb-3">
-                <input type="text" class="form-control" id="namaPoli" placeholder="Nama Poli" name="namaPoli">
+                <input type="hidden" name="id_dokter" id="id_dokter_edit">
+                <input type="text" class="form-control" id="nama_poli" placeholder="Nama Poli" name="namaPoli">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="namaDokter" placeholder="Nama Dokter" name="namaDokter">
+                <input type="text" class="form-control" id="nama_dokter" placeholder="Nama Dokter" name="namaDokter">
             </div>
             <div class="mb-3">
                 <input type="text" class="form-control" id="spesialis" placeholder="spesialis" name="spesialis">
             </div>
             <div class="mb-3">
-                <input type="date" class="form-control" id="tglMasuk" placeholder="tglMasuk" name="tglMasuk">
+                <input type="date" class="form-control" id="tglMasukX" placeholder="tglMasuk" name="tglMasuk">
             </div>
-            </form>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" name="editDataDokter" class="btn btn-primary">Update</button>
         </div>
+    </form>
         </div>
     </div>
     </div>
@@ -210,6 +188,15 @@
 
     <!-- Script -->
     <?php include('view/layout/footer.php'); ?>
-
+    
+    <script>
+        function setDetailDokter(data) {
+            document.getElementById("id_dokter_edit").value = document.getElementById("id_dokter").value;
+            document.getElementById("nama_dokter").value = document.getElementById(data + "_namaDokter").value;
+            document.getElementById("spesialis").value = document.getElementById(data + "_spesialis").value;
+            document.getElementById("tglMasukX").value = document.getElementById(data + "_tglMasuk").value;
+            document.getElementById("nama_poli").value = document.getElementById(data + "_namaPoli").value;
+        }
+    </script>
 </body>
 </html>
