@@ -48,8 +48,8 @@ body{
 .navbar #navMenu{
     text-align: center;
     border-radius: 50px;
-    margin-left: 40% !important;
-    background-color: #658c6467;
+    margin-left: 20% !important;
+    background-color: #29c72667;
 }
 
 .navbar #navMenu .itemMenu{
