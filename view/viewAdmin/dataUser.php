@@ -50,7 +50,7 @@
     <?php include('view/layout/navbarAdmin.php'); ?>  
 
     <div class="pb-2" style="background-color: #788F76; height: 100%; width: 100%;">
-        <div class="p-2">
+        <div class="p-2 m-3 mt-4">
             <div class="card m-5 h-100">
                 <div>
                     <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration">

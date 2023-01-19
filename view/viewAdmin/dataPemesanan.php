@@ -47,8 +47,9 @@
 
     <?php include('view/layout/navbarAdmin.php'); ?> 
 
-    <div class="pb-2" style="background-color: #788F76; height: 100%; position: fixed !important; width: 100%;">
-        <div class="card m-5 h-100">
+    <div class="pb-2 mt-5" style="background-color: #788F76; height: 100%; width: 100%;">
+        <div class="p-3 pt-5">
+        <div class="card h-100">
             <div>
                 <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration">
                     <i class="fa-solid fa-arrow-rotate-left" style=""></i>
@@ -155,6 +156,7 @@
 
             </div>
         </div>
+        </div>
     </div>
 
     <!-- Modal Tambah -->
@@ -258,7 +260,7 @@
             <form id="formchangeStatus" action="" method="post">
                 <div class="mb-3">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="namaPasien" placeholder="Nama Pasien" name="namaPasien" value="" readonly>
+                        <input type="text" class="form-control" id="namaPasien" placeholder="Nama Pasien" name="namaPasien" value="" >
                     </div>
                     <div class="mb-3">
                         <input type="text" class="form-control" id="namaObat" placeholder="Nama Obat" name="namaObat" value="" readonly>

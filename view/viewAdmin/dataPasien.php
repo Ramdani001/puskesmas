@@ -83,106 +83,108 @@
   </div>
 </div>
 
-    <div style="background-color: #788F76; height: 100%; position: fixed !important; width: 100%;">
-    <div class=" card m-5">
-            <div>
-                <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration">
-                    <i class="fa-solid fa-arrow-rotate-left" style=""></i>
-                </a>
-                <h1 class="text-center">Data Pasien</h1>
-            </div>
-            <div class="p-5 ">
-                <table class="table table-striped table-hover text-center w-100">
-                <tr>
-                    <th>No</th>
-                    <th>Tanggal Pemesanan</th>
-                    <th>Type Poli</th>
-                    <th>Nama Pasien</th> 
-                    <th>status</th> 
-                    <th>Aksi</th>
-                </tr>
-
-                <?php $i = $awalData + 1?>
-                <?php foreach($tbl_pemesanan_poli as $pemesanan): ?>
+    <div style="background-color: #788F76; height: 100%; width: 100%;">
+        <div class="m-5 p-5">
+            <div class=" card ">
+                <div>
+                    <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration">
+                        <i class="fa-solid fa-arrow-rotate-left" style=""></i>
+                    </a>
+                    <h1 class="text-center">Data Pasien</h1>
+                </div>
+                <div class="p-5 ">
+                    <table class="table table-striped table-hover text-center w-100">
                     <tr>
-                        <td><?= $i; ?></td> 
-                        <td><?= $pemesanan["tglPemesanan"]; ?></td>
-                        <td><?= $pemesanan["typePoli"]; ?></td>
-                        <td><?= $pemesanan["namaPasien"]; ?></td>
-                        <td>
-                            <?php if($pemesanan["status"] == "Diajukan") {?>
-                                <button class="btn btn-secondary">
-                                    <?= $pemesanan["status"]; ?>
-                                </button>
-                            <?php } else if ($pemesanan["status"] == "Diproses"){?>
-                                <button class="btn btn-primary">
-                                    <?= $pemesanan["status"]; ?>
-                                </button>
-                            <?php } else if ($pemesanan["status"] == "Disetujui"){?>
-                                <button class="btn btn-success">
-                                    <?= $pemesanan["status"]; ?>
-                                </button>
-                            <?php } else {?>
-                                <button class="btn btn-danger">
-                                    <?= $pemesanan["status"]; ?>
-                                </button>
-                            <?php }?>
-                        </td>
-                        <td class="">
-                            <form action="#" method="post">
-                                <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#changeStatus" name="">
-                                    Status
-                                </button>
-                                <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editData" name="">
-                                    <i class="fa-solid fa-pen" style="color: green;"></i>
-                                </button>
-                                <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
-                                    <i class="fa-solid fa-trash" style="color: red;"></i>
-                                </button>
-                            </form>
-                        </td>
+                        <th>No</th>
+                        <th>Tanggal Pemesanan</th>
+                        <th>Type Poli</th>
+                        <th>Nama Pasien</th> 
+                        <th>status</th> 
+                        <th>Aksi</th>
                     </tr>
-                    <?php $i++ ?>
-                <?php endforeach; ?>
-                </table>
 
-                <!-- navigasi -->
-                <div style=" display: flex; justify-content: center; width: 25%; float: right; background-color: white; text-align: center;">
-                    <div style=" padding: 4px; margin-right: 8px;" id="prevBtn">
-                        <?php if( $halamanAktif > 1 ) : ?>
-                            <div>
-                                <form action="" method="post">
-                                    <input type="hidden" name="prev" value="<?= $halamanAktif - 1; ?>" >
-                                    <button name="halaman" class="btn btn-primary">Prev</button>
+                    <?php $i = $awalData + 1?>
+                    <?php foreach($tbl_pemesanan_poli as $pemesanan): ?>
+                        <tr>
+                            <td><?= $i; ?></td> 
+                            <td><?= $pemesanan["tglPemesanan"]; ?></td>
+                            <td><?= $pemesanan["typePoli"]; ?></td>
+                            <td><?= $pemesanan["namaPasien"]; ?></td>
+                            <td>
+                                <?php if($pemesanan["status"] == "Diajukan") {?>
+                                    <button class="btn btn-secondary">
+                                        <?= $pemesanan["status"]; ?>
+                                    </button>
+                                <?php } else if ($pemesanan["status"] == "Diproses"){?>
+                                    <button class="btn btn-primary">
+                                        <?= $pemesanan["status"]; ?>
+                                    </button>
+                                <?php } else if ($pemesanan["status"] == "Disetujui"){?>
+                                    <button class="btn btn-success">
+                                        <?= $pemesanan["status"]; ?>
+                                    </button>
+                                <?php } else {?>
+                                    <button class="btn btn-danger">
+                                        <?= $pemesanan["status"]; ?>
+                                    </button>
+                                <?php }?>
+                            </td>
+                            <td class="">
+                                <form action="#" method="post">
+                                    <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#changeStatus" name="">
+                                        Status
+                                    </button>
+                                    <button type="submit" class="border-0" style="font-size: 18px !important; padding-right: 10px; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#editData" name="">
+                                        <i class="fa-solid fa-pen" style="color: green;"></i>
+                                    </button>
+                                    <button type="submit" class="border-0 " style="background-color: transparent; font-size: 18px !important;" name="">
+                                        <i class="fa-solid fa-trash" style="color: red;"></i>
+                                    </button>
                                 </form>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                    <div class="">
-                        <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
-                            <?php if( $i == $halamanAktif ) : ?>
-                                    <a class="text-decoration-none text-dark bg-white shadow border p-2" style=" border-radius: 10px !important;font-size: 30px !important;" style=""><?= $i; ?></a>
-                                
-                                    <?php else : ?>
-                                        <a class="text-decoration-none p-2 text-dark" id="itemNone"><?= $i; ?></a>
-                                    <?php endif; ?>
-                        <?php endfor; ?>
-                    </div>
-                    
-                    <div style=" padding: 4px; margin-left: 8px;" id="nextBtn">
-                        <?php if( $halamanAktif < $jumlahHalaman ) : ?> 
-                            <form action="" method="post">
-                                <input type="hidden" name="next" value="<?= $halamanAktif + 1; ?>">
-                                <button name="halaman" class="btn btn-primary">Next</button>
-                            </form>
-                        </a>
-                        <?php endif; ?>
-                    </div>
+                            </td>
+                        </tr>
+                        <?php $i++ ?>
+                    <?php endforeach; ?>
+                    </table>
 
-                 </div>
-                        <!-- End Navigasi -->
+                    <!-- navigasi -->
+                    <div style=" display: flex; justify-content: center; width: 25%; float: right; background-color: white; text-align: center;">
+                        <div style=" padding: 4px; margin-right: 8px;" id="prevBtn">
+                            <?php if( $halamanAktif > 1 ) : ?>
+                                <div>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="prev" value="<?= $halamanAktif - 1; ?>" >
+                                        <button name="halaman" class="btn btn-primary">Prev</button>
+                                    </form>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="">
+                            <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+                                <?php if( $i == $halamanAktif ) : ?>
+                                        <a class="text-decoration-none text-dark bg-white shadow border p-2" style=" border-radius: 10px !important;font-size: 30px !important;" style=""><?= $i; ?></a>
+                                    
+                                        <?php else : ?>
+                                            <a class="text-decoration-none p-2 text-dark" id="itemNone"><?= $i; ?></a>
+                                        <?php endif; ?>
+                            <?php endfor; ?>
+                        </div>
+                        
+                        <div style=" padding: 4px; margin-left: 8px;" id="nextBtn">
+                            <?php if( $halamanAktif < $jumlahHalaman ) : ?> 
+                                <form action="" method="post">
+                                    <input type="hidden" name="next" value="<?= $halamanAktif + 1; ?>">
+                                    <button name="halaman" class="btn btn-primary">Next</button>
+                                </form>
+                            </a>
+                            <?php endif; ?>
+                        </div>
 
-		        </div>
+                    </div>
+                            <!-- End Navigasi -->
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

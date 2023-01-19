@@ -48,8 +48,8 @@
     <?php include('view/layout/navbarAdmin.php'); ?> 
 
     <div class="pb-2" style="background-color: #788F76; height: 100%;  width: 100%; position: fixed !important;">
-        <div class="p-2">
-            <div class="card">
+        <div class="p-3 mt-5 mx-auto">
+            <div class="card m-3">
                 <div class=" ">
                     <a href="<?= $main_url?>admin/dashboard" class="fs-1 ps-2 text-dark text-decoration ">
                         <i class="fa-solid fa-arrow-rotate-left" style=""></i>
