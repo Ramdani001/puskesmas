@@ -191,7 +191,7 @@
     
     <script>
         function setDetailDokter(data) {
-            document.getElementById("id_dokter_edit").value = document.getElementById("id_dokter").value;
+            document.getElementById("id_dokter_edit").value = data;
             document.getElementById("nama_dokter").value = document.getElementById(data + "_namaDokter").value;
             document.getElementById("spesialis").value = document.getElementById(data + "_spesialis").value;
             document.getElementById("tglMasukX").value = document.getElementById(data + "_tglMasuk").value;
