@@ -46,7 +46,7 @@
     
     <!-- Modal -->
     <div class="modal fade" id="modalHistory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalHistoryLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="modalHistoryLabel">History Pasien</h1>
@@ -54,32 +54,25 @@
         </div>
         <div class="modal-body w-100">
             <h1>History Pendaftaran & Pemesanan</h1>
-                <div class="d-flex w-100 mx-auto text-justify">
+                <div class="d-flex w-100 flex-wrap text-justify">
                     
+
                 <?php foreach($dataPemesanan as $pesanan): ?>
                     <?php if ($pesanan["typePoli"]) { ?>
-                        <div class="card me-3 w-75 mx-auto">
-                            <div class="card-body m-3">
+                        <div class="card w-50 mx-auto">
+                            <div class="card-body m-3"> 
                                 <table cellspacing="2">
                                     <tr class="mb-3">
                                         <td class="pe-5">Tanggal Pendaftaran</td>
-                                        <td class="ps-5">: <?= $pesanan["tglPemesanan"]; ?></td>
+                                        <td class="ps-5">: <?= $pesanan["tglPendaftaran"]; ?></td>
                                     </tr>
                                     <tr class="pb-3">
                                         <td class="pe-5">Type Pendaftaran</td>
-                                        <td class="ps-5">: <?= $pesanan["typePendaftaran"]; ?></td>
+                                        <td class="ps-5">: <?= $pesanan["typePoli"]; ?></td>
                                     </tr>
                                     <tr class="pb-3">
                                         <td class="pe-5">Nama Pasien</td>
                                         <td class="ps-5">: <?= $pesanan["namaPasien"]; ?></td>
-                                    </tr>
-                                    <tr class="pb-3">
-                                        <td class="pe-5">Keluhan</td>
-                                        <td class="ps-5">: <?= $pesanan["keluhan"]; ?></td>
-                                    </tr>
-                                    <tr class="pb-3">
-                                        <td class="pe-5">Tanggal Checkup</td>
-                                        <td class="ps-5">: <?= $pesanan["tglCheckUp"]; ?></td>
                                     </tr>
                                     <tr class="pb-3">
                                         <td class="pe-5">Status Pendaftaran</td>
@@ -91,7 +84,7 @@
                             </div>
                         </div>
                     <?php } else { ?>
-                        <div class="card me-3 w-75 mx-auto">
+                        <div class="card w-50 mx-auto">
                         <div class="card-body m-3">
                             <table cellspacing="2">
                                 <tr class="mb-3">
@@ -129,6 +122,8 @@
                     </div>
                     <?php } ?>
                 <?php endforeach; ?>
+
+
             </div>
             <div class="w-75 text-center mx-auto mt-3">
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">Kembali Ke Menu</button>

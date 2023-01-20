@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?= $main_url?>assets/style/styleIndex.css">
 
 </head> 
-<body style="background-image: url('../../assets/img/login/bg_pendaftaran.jpeg') !important;">
+<body >
  
     <?php include('view/layout/navbar.php'); ?>
     

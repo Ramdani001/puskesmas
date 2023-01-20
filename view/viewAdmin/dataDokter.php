@@ -17,7 +17,7 @@
 
 
 </head> 
-<body>
+<body> 
 
     <?php include('view/layout/navbarAdmin.php'); ?>  
 

@@ -7,7 +7,7 @@
         exit;
     }
 
-    // Cek apabila admin login, maka redirect ke dashboard
+    // Cek apabila admin login, maka redirect ke dashboard 
     if(isset($_SESSION["loginAdmin"]) && $_SESSION["email"] == "admin@gmail.com") {
         header("Location: admin/dashboard");
         exit;

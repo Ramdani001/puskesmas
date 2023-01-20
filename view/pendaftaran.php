@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="<?= $main_url?>assets/style/styleIndex.css">
 
 </head> 
-<body style="background-image: url('../assets/img/login/bg_pendaftaran.jpeg') !important;">
+<body style="">
  
     <?php include('view/layout/navbar.php'); ?>
     
     <div id="container" class="container-fluid text-center">
-        <div class="w-75 mx-auto card m-3 pb-2">
+        <div class="w-75 mx-auto card m-3 pb-2 opacity-50 ">
             <div class="d-flex flex-row">
                 <div class="fs-2 ms-3">
                     <a href="<?= $main_url?>beranda" class="text-dark">
